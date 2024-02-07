@@ -68,6 +68,9 @@ instance/
 # Scrapy stuff:
 .scrapy
 
+# intellij hidden files
+.idea
+
 # Sphinx documentation
 docs/_build/
 
