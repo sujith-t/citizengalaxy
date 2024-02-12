@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <title>.:Citizen Galaxy</title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+        <script type="text/javascript">
+            //https://www.chartjs.org/docs/latest/samples/other-charts/doughnut.html
+            //const myChart = new Chart("myChart", {
+            //    type: "line",
+            //    data: {},
+            //    options: {}
+            //});
+        </script>
+    </head>
+    <body>
+    <header>
+        <table>
+            <tr>
+                <td><img src="{% static 'images/favicon.png' %}" height="60px" width="60px"/></td>
+                <td><img src="{% static 'images/cg.jpg' %}"/></td>
+                <td class="top-menu-link">Home</td>
+                <td class="top-menu-link">Search</td>
+                <td class="top-menu-link">Classify</td>
+                <td class="top-menu-link">&nbsp;</td>
+                <td>
+                    <select class="quick-search-select">
+                        <option>Quick Search</option>
+                        <option>Obj ID</option>
+                        <option>IAU Name</option>
+                    </select>
+                    <input type="text" placeholder="Search Object" class="quick-search-box" />
+                </td>
+                <td><img src="{% static 'images/search.png' %}" height="25px" width="25px"/></td>
+            </tr>
+        </table>
+    </header>

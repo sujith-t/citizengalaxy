@@ -1,0 +1,44 @@
+body {
+    min-height: 600px;
+}
+
+.top-menu-link {
+    font-family: "Felix Titling", Arial, serif;
+    font-size: 20px;
+    padding: 2px;
+    width: 70px;
+    vertical-align: center;
+    align-content: center;
+}
+
+.quick-search-select {
+    font-family: Arial, ui-rounded;
+    font-size: 15px;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 5px;
+    height: 30px;
+    width: 150px;
+    text-align: center;
+    background-color: gray;
+    color: #ffffff;
+}
+
+.quick-search-box {
+    font-family: Arial, ui-rounded;
+    font-size: 12px;
+    border-radius: 20px;
+    border: 1px solid gray;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 23px;
+    width: 250px;
+    text-align: left;
+    color: dimgray;
+}
+
+header {
+    border-bottom: 1px solid dimgray;
+}
