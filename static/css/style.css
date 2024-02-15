@@ -4,11 +4,22 @@ body {
 
 .top-menu-link {
     font-family: "Felix Titling", Arial, serif;
-    font-size: 20px;
+    font-size: 18px;
     padding: 2px;
     width: 70px;
     vertical-align: center;
     align-content: center;
+    border-left: 1px solid #dddfe0;
+}
+
+.top-menu-link a:hover, .top-menu-link a:visited, .top-menu-link a:out {
+    color: inherit;
+    text-decoration: none;
+}
+
+.top-menu-link:hover {
+    border-bottom: 5px solid #000000;
+    cursor: pointer;
 }
 
 .quick-search-select {
@@ -22,12 +33,14 @@ body {
     text-align: center;
     background-color: gray;
     color: #ffffff;
+    margin-right: 2px;
 }
 
 .quick-search-box {
     font-family: Arial, ui-rounded;
     font-size: 12px;
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     border: 1px solid gray;
     padding-left: 10px;
     padding-right: 10px;
@@ -39,6 +52,27 @@ body {
     color: dimgray;
 }
 
+.top-search-submit {
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    width: 30px;
+}
+
+.top-search-submit img {
+    padding-left: 1px;
+}
+
 header {
     border-bottom: 1px solid dimgray;
+}
+
+footer {
+    border-top: 1px solid #b7bcc4;
+    font-family: Arial, ui-rounded;
+    text-align: right;
+    font-size: 14px;
+    color: #585959;
 }

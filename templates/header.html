@@ -22,19 +22,32 @@
             <tr>
                 <td><img src="{% static 'images/favicon.png' %}" height="60px" width="60px"/></td>
                 <td><img src="{% static 'images/cg.jpg' %}"/></td>
-                <td class="top-menu-link">Home</td>
+                <td class="top-menu-link"><a href="/statistics">Statistics</a></td>
                 <td class="top-menu-link">Search</td>
                 <td class="top-menu-link">Classify</td>
                 <td class="top-menu-link">&nbsp;</td>
                 <td>
-                    <select class="quick-search-select">
-                        <option>Quick Search</option>
-                        <option>Obj ID</option>
-                        <option>IAU Name</option>
-                    </select>
-                    <input type="text" placeholder="Search Object" class="quick-search-box" />
+                    <form>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <select class="quick-search-select">
+                                        <option>Quick Search</option>
+                                        <option>Obj ID</option>
+                                        <option>IAU Name</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="Search Object" class="quick-search-box" />
+                                </td>
+                                <td class="top-search-submit">
+                                    <img src="{% static 'images/search.png' %}" height="24px" width="24px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
                 </td>
-                <td><img src="{% static 'images/search.png' %}" height="25px" width="25px"/></td>
             </tr>
         </table>
     </header>
