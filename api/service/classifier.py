@@ -1,23 +1,46 @@
-from citizengalaxy.settings import STATICFILES_DIRS
-
 import joblib
 import pandas as pd
+from sklearn import preprocessing
+from sklearn.preprocessing import KBinsDiscretizer
+from citizengalaxy.settings import STATICFILES_DIRS
 
 
 # @author Sujith T
-class GalaxyClassClassifier:
+# Deus et Scientia Erit Pactum Meum 2024
+class RandomForestClassifierImpl:
 
+    # default constructor
     def __init__(self):
-        dir_path = "/galaxy_classification/dataset"
-        model_path = dir_path + "/rf_model.joblib"
-        self._classifier = joblib.load(model_path)
-        self._min_max_df = pd.read_csv(dir_path + "/feature_min_max.csv")
+
+        # initialize all data transformers
+        # StandardScaler, KBinsDiscretizer
+        def _initialize():
+
+            # initializing data transformers
+            trans_values = self._std_scaler.fit_transform(self._df[self._features])
+            trans_df = pd.DataFrame(trans_values, columns=self._features)
+            self._kbins.fit_transform(trans_df)
+
+        # load models and CSV files
+        data_path = str(STATICFILES_DIRS.__getitem__(0)) + "/data"
+        self._classifier = joblib.load(data_path + "/rf_model.joblib")
+        self._min_max_df = pd.read_csv(data_path + "/feature_min_max.csv")
+        self._df = pd.read_csv(data_path + "/categorized_preprocess.csv")
+
+        # initialize data transformers
+        self._std_scaler = preprocessing.StandardScaler()
+        self._kbins = KBinsDiscretizer(n_bins=1000, encode='ordinal', strategy='uniform', subsample=None)
+
         self._features = []
         for i in range(self._min_max_df.shape[0]):
             self._features.append(self._min_max_df["feature"][i])
 
+        _initialize()
         print("Model and feature min/max are loaded")
 
+    # transforms user inputs to approximate ranges
+    # each feature value is detected on the class ranges and they are approximated
+    # if value is closer to either min/max value of a class (10% default) it's approximated to that value
     def _detect_adjust_border_values(self, data={}, border_cutoff_percent=10):
         # converting the keys to uppercase
         data = {k.upper(): data[k] for k in data}
@@ -83,6 +106,11 @@ class GalaxyClassClassifier:
 
         return data
 
+    # does the class prediction for a galaxy based on user inputs
     def predict_galaxy_class(self, data={}):
-        data = self._detect_adjust_border_values(data)
-        # return self._classifier.predict(features)
+        data_to_predict = [self._detect_adjust_border_values(data)]
+        data_to_predict = self._std_scaler.transform(pd.DataFrame(data_to_predict))
+        data_to_predict = pd.DataFrame(data=data_to_predict, columns=self._features)
+
+        data_to_predict = pd.DataFrame(data=self._kbins.transform(data_to_predict), columns=self._features)
+        return self._classifier.predict(data_to_predict)
