@@ -6,6 +6,7 @@
         <title>.:Citizen Galaxy</title>
         <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
         <script type="text/javascript">
             //https://www.chartjs.org/docs/latest/samples/other-charts/doughnut.html
@@ -24,7 +25,7 @@
                 <td><img src="{% static 'images/cg.jpg' %}"/></td>
                 <td class="top-menu-link"><a href="/statistics">Statistics</a></td>
                 <td class="top-menu-link">Search</td>
-                <td class="top-menu-link">Classify</td>
+                <td class="top-menu-link"><a href="/classify">Classify</a></td>
                 <td class="top-menu-link">&nbsp;</td>
                 <td>
                     <form>
