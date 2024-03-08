@@ -1,5 +1,6 @@
 body {
     min-height: 600px;
+    background-color: #FFFFFF;
 }
 
 .top-menu-link {
@@ -75,4 +76,92 @@ footer {
     text-align: right;
     font-size: 14px;
     color: #585959;
+}
+
+.final-label img {
+    height: 250px;
+    width: 250px;
+}
+
+.tbl-classify {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+    font-family: Tahoma, ui-rounded;
+    font-size: 13px;
+}
+
+.tbl-classify h1 {
+    text-align: center;
+    font-family: Arial, Tahoma, ui-rounded;
+}
+
+.txt {
+    border: 1px solid #757a7d;
+    padding: 2px;
+    height: 25px;
+    font-family: Tahoma, ui-rounded;
+    font-size: 14px;
+    color:  #656d71;
+    background-color: #f4f6f6;
+}
+
+.numeric {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.cls-label {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 2px;
+    width: 250px;
+    height: 250px;
+}
+
+.tag-label {
+    background-color:  #dcdddd;
+    height: 22px;
+    text-align: center;
+}
+
+
+.btn-grad {
+    background-image: linear-gradient(to right, #003973 0%, #E5E5BE  51%, #003973  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+}
+
+
+.btn-grad {
+    background-image: linear-gradient(to right, #485563 0%, #29323c  51%, #485563  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+}
+
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-grad {
+    background-color: black;
+    cursor: pointer;
 }
