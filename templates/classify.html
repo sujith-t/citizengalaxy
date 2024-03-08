@@ -1,0 +1,325 @@
+{% include "header.html" %}
+{% load static %}
+<script src="{% static 'js/classify.js' %}"></script>
+<table class="tbl-classify">
+    <tr>
+        <td colspan="2"><h1>Instant Galaxy Classifier</h1></td>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td>PETROR 50R</td>
+                    <td width="200"><input type="text" class="txt numeric" /></td>
+                    <td>PETROR 90R</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td>PETROMAG U</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td>PETROMAG G</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td>PETROMAG R</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td>PETROMAG I</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td>PETROMAG Z</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr><td colspan="4">&nbsp;</td></tr>
+                <tr>
+                    <td>PETROMAGERR U</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td>PETROMAGERR G</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td>PETROMAGERR R</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td>PETROMAGERR I</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td>PETROMAGERR Z</td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+        <td class="final-label"><div class="cls-label"><img src="{% static 'images/planet.png' %}" /></div></td>
+    </tr>
+    <tr><td colspan="2">&nbsp;</td></tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">PSFMAG R</td>
+                    <td class="tag-label">FIBERMAG R</td>
+                    <td class="tag-label">DEVMAG R</td>
+                    <td class="tag-label">EXPMAG R</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td class="tag-label">DEVMAGERR R</td>
+                    <td class="tag-label">EXPMAGERR R</td>
+                    <td class="tag-label">FRACDEV R</td>
+                    <td class="tag-label">MU50 R</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">EXTINCTION U</td>
+                    <td class="tag-label">EXTINCTION G</td>
+                    <td class="tag-label">EXTINCTION R</td>
+                    <td class="tag-label">EXTINCTION I</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td class="tag-label">DEVMAGERR R</td>
+                    <td class="tag-label">EXPMAGERR R</td>
+                    <td class="tag-label">FRACDEV R</td>
+                    <td class="tag-label">MU50 R</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">EXTINCTION U</td>
+                    <td class="tag-label">EXTINCTION G</td>
+                    <td class="tag-label">EXTINCTION R</td>
+                    <td class="tag-label">EXTINCTION I</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td class="tag-label">EXTINCTION Z</td>
+                    <td colspan="3">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td colspan="3">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">ROWC U</td>
+                    <td class="tag-label">ROWC G</td>
+                    <td class="tag-label">ROWC R</td>
+                    <td class="tag-label">ROWC I</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td class="tag-label">ROWC Z</td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">COLC U</td>
+                    <td class="tag-label">COLC G</td>
+                    <td class="tag-label">COLC R</td>
+                    <td class="tag-label">COLC I</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td class="tag-label">COLC Z</td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">CMODELMAG R</td>
+                    <td class="tag-label">CMODELMAGERR R</td>
+                    <td class="tag-label">REDSHIFT</td>
+                    <td class="tag-label">REDSHIFTERR</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">PETROMAG MU</td>
+                    <td class="tag-label">PETROMAG MG</td>
+                    <td class="tag-label">PETROMAG MR</td>
+                    <td class="tag-label">PETROMAG MI</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td class="tag-label">PETROMAG MZ</td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">PETROMAGERR MU</td>
+                    <td class="tag-label">PETROMAGERR MG</td>
+                    <td class="tag-label">PETROMAGERR MR</td>
+                    <td class="tag-label">PETROMAGERR MI</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td class="tag-label">PETROMAGERR MZ</td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td class="tag-label">PETROR50 R KPC</td>
+                    <td class="tag-label">PETROR50 R KPC Simple Bin</td>
+                    <td class="tag-label">PETROMAG MR Simple Bin</td>
+                    <td class="tag-label">Redshift Simple Bin</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric"/></td>
+                </tr>
+                <tr>
+                    <td class="tag-label">WVT Bin</td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="txt numeric"/></td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="button" class="btn-grad" value="Find Galaxy Class"/></td>
+    </tr>
+</table>
+{% include "footer.html" %}

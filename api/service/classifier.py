@@ -17,7 +17,7 @@ class RandomForestClassifierImpl:
         def _initialize():
 
             # initializing data transformers
-            trans_values = self._std_scaler.fit_transform(self._df[self._features])
+            trans_values = self._std_scaler.fit_transform(df[self._features])
             trans_df = pd.DataFrame(trans_values, columns=self._features)
             self._kbins.fit_transform(trans_df)
 
@@ -25,7 +25,7 @@ class RandomForestClassifierImpl:
         data_path = str(STATICFILES_DIRS.__getitem__(0)) + "/data"
         self._classifier = joblib.load(data_path + "/rf_model.joblib")
         self._min_max_df = pd.read_csv(data_path + "/feature_min_max.csv")
-        self._df = pd.read_csv(data_path + "/categorized_preprocess.csv")
+        df = pd.read_csv(data_path + "/categorized_preprocess.csv")
 
         # initialize data transformers
         self._std_scaler = preprocessing.StandardScaler()
