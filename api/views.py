@@ -13,7 +13,7 @@ def classify_galaxy(request):
     serializer = ClassifySerializer(data=request.data)
 
     if serializer.is_valid():
-        classes = classifier.predict_galaxy_class(serializer.data)
-        return Response(classes, status=200)
+        clazz = classifier.predict_galaxy_class(serializer.data)
+        return Response([clazz], status=200)
     else:
         return Response({"message": "Invalid data posted", "status": 400, "errors": serializer.errors})

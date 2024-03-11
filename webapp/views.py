@@ -8,3 +8,6 @@ def index(request):
 
 def statistics(request):
     return render(request, 'statistics.html')
+
+def classify(request):
+    return render(request, 'classify.html')

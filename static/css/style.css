@@ -111,12 +111,24 @@ footer {
     padding-right: 10px;
 }
 
-.cls-label {
-    border: 1px solid black;
+.final-label {
+    border-left: 7px solid black;
+    border-bottom: 7px solid black;
+    border-right: 5px solid #969c9e;
+    border-top: 5px solid #969c9e;
     border-radius: 15px;
     padding: 2px;
     width: 250px;
     height: 250px;
+    background-color: #e9eff5;
+}
+
+.cls-label {
+    margin: auto;
+    font-size: 120px;
+    font-weight: bold;
+    text-align: center;
+    display: none;
 }
 
 .tag-label {

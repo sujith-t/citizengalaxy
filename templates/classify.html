@@ -10,49 +10,48 @@
             <table>
                 <tr>
                     <td>PETROR 50R</td>
-                    <td width="200"><input type="text" class="txt numeric" /></td>
+                    <td width="200"><input type="text" class="txt numeric" id="petror50_r" /></td>
                     <td>PETROR 90R</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petror90_r"/></td>
                 </tr>
                 <tr>
                     <td>PETROMAG U</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromag_u" /></td>
                     <td>PETROMAG G</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromag_g"/></td>
                 </tr>
                 <tr>
                     <td>PETROMAG R</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromag_r"/></td>
                     <td>PETROMAG I</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromag_i"/></td>
                 </tr>
                 <tr>
                     <td>PETROMAG Z</td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td><input type="text" class="txt numeric" id="petromag_z"/></td>
+                    <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr><td colspan="4">&nbsp;</td></tr>
                 <tr>
                     <td>PETROMAGERR U</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_u"/></td>
                     <td>PETROMAGERR G</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_g"/></td>
                 </tr>
                 <tr>
                     <td>PETROMAGERR R</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_r"/></td>
                     <td>PETROMAGERR I</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_i"/></td>
                 </tr>
                 <tr>
                     <td>PETROMAGERR Z</td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_z"/></td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
             </table>
         </td>
-        <td class="final-label"><div class="cls-label"><img src="{% static 'images/planet.png' %}" /></div></td>
+        <td class="final-label"><img src="{% static 'images/planet.png' %}" /><p class="cls-label"></p></td>
     </tr>
     <tr><td colspan="2">&nbsp;</td></tr>
     <tr>
@@ -65,10 +64,10 @@
                     <td class="tag-label">EXPMAG R</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="psfmag_r" /></td>
+                    <td><input type="text" class="txt numeric" id="fibermag_r"/></td>
+                    <td><input type="text" class="txt numeric" id="devmag_r" /></td>
+                    <td><input type="text" class="txt numeric" id="expmag_r" /></td>
                 </tr>
                 <tr>
                     <td class="tag-label">DEVMAGERR R</td>
@@ -77,13 +76,16 @@
                     <td class="tag-label">MU50 R</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="devmagerr_r" /></td>
+                    <td><input type="text" class="txt numeric" id="expmagerr_r" /></td>
+                    <td><input type="text" class="txt numeric" id="fracdev_r" /></td>
+                    <td><input type="text" class="txt numeric" id="mu50_r" /></td>
                 </tr>
             </table>
         </td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
     </tr>
     <tr>
         <td colspan="2">&nbsp;</td>
@@ -98,50 +100,17 @@
                     <td class="tag-label">EXTINCTION I</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                </tr>
-                <tr>
-                    <td class="tag-label">DEVMAGERR R</td>
-                    <td class="tag-label">EXPMAGERR R</td>
-                    <td class="tag-label">FRACDEV R</td>
-                    <td class="tag-label">MU50 R</td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <table>
-                <tr>
-                    <td class="tag-label">EXTINCTION U</td>
-                    <td class="tag-label">EXTINCTION G</td>
-                    <td class="tag-label">EXTINCTION R</td>
-                    <td class="tag-label">EXTINCTION I</td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="extinction_u" /></td>
+                    <td><input type="text" class="txt numeric" id="extinction_g" /></td>
+                    <td><input type="text" class="txt numeric" id="extinction_r" /></td>
+                    <td><input type="text" class="txt numeric" id="extinction_i" /></td>
                 </tr>
                 <tr>
                     <td class="tag-label">EXTINCTION Z</td>
                     <td colspan="3">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="extinction_z" /></td>
                     <td colspan="3">&nbsp;</td>
                 </tr>
             </table>
@@ -160,17 +129,17 @@
                     <td class="tag-label">ROWC I</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="rowc_u" /></td>
+                    <td><input type="text" class="txt numeric" id="rowc_g" /></td>
+                    <td><input type="text" class="txt numeric" id="rowc_r" /></td>
+                    <td><input type="text" class="txt numeric" id="rowc_i" /></td>
                 </tr>
                 <tr>
                     <td class="tag-label">ROWC Z</td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="rowc_z"/></td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
             </table>
@@ -190,17 +159,17 @@
                     <td class="tag-label">COLC I</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="colc_u" /></td>
+                    <td><input type="text" class="txt numeric" id="colc_g" /></td>
+                    <td><input type="text" class="txt numeric" id="colc_r" /></td>
+                    <td><input type="text" class="txt numeric" id="colc_i" /></td>
                 </tr>
                 <tr>
                     <td class="tag-label">COLC Z</td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="colc_z" /></td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
             </table>
@@ -220,10 +189,10 @@
                     <td class="tag-label">REDSHIFTERR</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="cmodelmag_r" /></td>
+                    <td><input type="text" class="txt numeric" id="cmodelmagerr_r" /></td>
+                    <td><input type="text" class="txt numeric" id="redshift" /></td>
+                    <td><input type="text" class="txt numeric" id="redshifterr" /></td>
                 </tr>
             </table>
         </td>
@@ -242,17 +211,17 @@
                     <td class="tag-label">PETROMAG MI</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromag_mu" /></td>
+                    <td><input type="text" class="txt numeric" id="petromag_mg" /></td>
+                    <td><input type="text" class="txt numeric" id="petromag_mr" /></td>
+                    <td><input type="text" class="txt numeric" id="petromag_mi" /></td>
                 </tr>
                 <tr>
                     <td class="tag-label">PETROMAG MZ</td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromag_mz" /></td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
             </table>
@@ -272,17 +241,17 @@
                     <td class="tag-label">PETROMAGERR MI</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_mu" /></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_mg" /></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_mr" /></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_mi" /></td>
                 </tr>
                 <tr>
                     <td class="tag-label">PETROMAGERR MZ</td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_mz" /></td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
             </table>
@@ -302,17 +271,17 @@
                     <td class="tag-label">Redshift Simple Bin</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="petror50_r_kpc" /></td>
+                    <td><input type="text" class="txt numeric" id="petror50_r_kpc_simple_bin" /></td>
+                    <td><input type="text" class="txt numeric" id="petromag_mr_simple_bin" /></td>
+                    <td><input type="text" class="txt numeric" id="redshift_simple_bin" /></td>
                 </tr>
                 <tr>
                     <td class="tag-label">WVT Bin</td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="txt numeric"/></td>
+                    <td><input type="text" class="txt numeric" id="wvt_bin" /></td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
             </table>

@@ -113,4 +113,6 @@ class RandomForestClassifierImpl:
         data_to_predict = pd.DataFrame(data=data_to_predict, columns=self._features)
 
         data_to_predict = pd.DataFrame(data=self._kbins.transform(data_to_predict), columns=self._features)
-        return self._classifier.predict(data_to_predict)
+        predictions = self._classifier.predict(data_to_predict)
+
+        return predictions[0]
