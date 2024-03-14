@@ -53,7 +53,10 @@
         </td>
         <td class="final-label"><img src="{% static 'images/planet.png' %}" /><p class="cls-label"></p></td>
     </tr>
-    <tr><td colspan="2">&nbsp;</td></tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>Import From File: <input type="file" accept="text/csv" class="txt" id="file_import" /></td>
+    </tr>
     <tr>
         <td colspan="2">
             <table>
@@ -288,7 +291,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2"><input type="button" class="btn-grad" value="Find Galaxy Class"/></td>
+        <td colspan="2"><input type="button" class="btn-grad" value="Find Galaxy Class" id="btn-clazz" /></td>
     </tr>
 </table>
 {% include "footer.html" %}
