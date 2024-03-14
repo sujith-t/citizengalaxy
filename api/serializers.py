@@ -5,13 +5,13 @@ from rest_framework import serializers
 # Deus et scientia erit pactum meum
 # Serializer for the web-service
 class ClassifySerializer(serializers.Serializer):
-    petror50_r = serializers.FloatField(required=True, min_value=0.0000001)
-    petror90_r = serializers.FloatField(required=True, min_value=0.0000001)
-    petromag_u = serializers.FloatField(required=True, min_value=0.0000001)
-    petromag_g = serializers.FloatField(required=True, min_value=0.0000001)
-    petromag_r = serializers.FloatField(required=True, min_value=0.0000001)
-    petromag_i = serializers.FloatField(required=True, min_value=0.0000001)
-    petromag_z = serializers.FloatField(required=True, min_value=0.0000001)
+    petror50_r = serializers.FloatField(required=True, min_value=0.5, max_value=107.0)
+    petror90_r = serializers.FloatField(required=True, min_value=0.8, max_value=219.0)
+    petromag_u = serializers.FloatField(required=True, min_value=9.7, max_value=46.0)
+    petromag_g = serializers.FloatField(required=True, min_value=9.0, max_value=42.4)
+    petromag_r = serializers.FloatField(required=True, min_value=7.0, max_value=27.8)
+    petromag_i = serializers.FloatField(required=True, min_value=8.0, max_value=46.1)
+    petromag_z = serializers.FloatField(required=True, min_value=5.0, max_value=45.4)
 
     petromagerr_u = serializers.FloatField(required=True, min_value=0.0000001)
     petromagerr_g = serializers.FloatField(required=True, min_value=0.0000001)
