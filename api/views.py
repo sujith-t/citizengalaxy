@@ -1,12 +1,12 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import ClassifySerializer
-from .service.classifier import RandomForestClassifierImpl
+from .service.classifier import ClassifierFactory
 
 # @author Sujith T
 # Deus et Scientia Erit Pactum Meum 2024
 
-classifier = RandomForestClassifierImpl()
+classifier = ClassifierFactory.fetch_classifier()
 
 @api_view(["POST"])
 def classify_galaxy(request):

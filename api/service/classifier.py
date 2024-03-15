@@ -3,19 +3,18 @@ import pandas as pd
 from sklearn import preprocessing
 from sklearn.preprocessing import KBinsDiscretizer
 from citizengalaxy.settings import STATICFILES_DIRS
+from abc import ABC, abstractmethod
 
 
 # @author Sujith T
 # Deus et Scientia Erit Pactum Meum 2024
-class RandomForestClassifierImpl:
+class ClassifierModel(ABC):
 
     # default constructor
     def __init__(self):
-
         # initialize all data transformers
         # StandardScaler, KBinsDiscretizer
         def _initialize():
-
             # initializing data transformers
             trans_values = self._std_scaler.fit_transform(df[self._features])
             trans_df = pd.DataFrame(trans_values, columns=self._features)
@@ -23,7 +22,7 @@ class RandomForestClassifierImpl:
 
         # load models and CSV files
         data_path = str(STATICFILES_DIRS.__getitem__(0)) + "/data"
-        self._classifier = joblib.load(data_path + "/rf_model.joblib")
+        # self._classifier = joblib.load(data_path + "/rf_model.joblib")
         self._min_max_df = pd.read_csv(data_path + "/feature_min_max.csv")
         df = pd.read_csv(data_path + "/categorized_preprocess.csv")
 
@@ -36,7 +35,7 @@ class RandomForestClassifierImpl:
             self._features.append(self._min_max_df["feature"][i])
 
         _initialize()
-        print("Model and feature min/max are loaded")
+        print("Feature min/max are loaded")
 
     # transforms user inputs to approximate ranges
     # each feature value is detected on the class ranges and they are approximated
@@ -106,6 +105,24 @@ class RandomForestClassifierImpl:
 
         return data
 
+    # abstract method to be implemented in the child classes
+    @abstractmethod
+    def predict_galaxy_class(self, data={}):
+        pass
+
+
+# @author Sujith T
+# Deus et Scientia Erit Pactum Meum 2024
+class RandomForestClassifierImpl(ClassifierModel):
+
+    # default constructor
+    def __init__(self):
+        super().__init__()
+
+        data_path = str(STATICFILES_DIRS.__getitem__(0)) + "/data"
+        self._classifier = joblib.load(data_path + "/rf_model.joblib")
+        print("Random forest model loaded")
+
     # does the class prediction for a galaxy based on user inputs
     def predict_galaxy_class(self, data={}):
         data_to_predict = [self._detect_adjust_border_values(data)]
@@ -116,3 +133,24 @@ class RandomForestClassifierImpl:
         predictions = self._classifier.predict(data_to_predict)
 
         return predictions[0]
+
+
+# @author Sujith T
+# Factory to maintain models singleton
+# Deus et Scientia Erit Pactum Meum 2024
+class ClassifierFactory:
+    # class variable only accessible within the class
+    _clazz_dict = {}
+
+    @classmethod
+    def fetch_classifier(cls, model_name='random_forest'):
+
+        if model_name not in cls._clazz_dict.keys():
+            classifier = None
+
+            if model_name == "random_forest":
+                classifier = RandomForestClassifierImpl()
+
+            cls._clazz_dict[model_name] = classifier
+
+        return cls._clazz_dict[model_name]

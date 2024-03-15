@@ -14,6 +14,22 @@ $(document).ready(function(){
     //clicking of import CSV file button
     $("#file_import").change(handleCSVFileImport);
 
+    //clicking of export link
+    $("#export_csv").click(handleDataExportToCsv);
+
+    /**
+     * Export values to CSV file for easy reuse(import) again
+     **/
+    function handleDataExportToCsv() {
+        let outString = "field,value\r\n";
+        $(".numeric").each(function(inx, element) {
+            outString += $(element).attr("id") + "," + $(element).val() + "\r\n";
+        });
+
+        $(this).attr("href", 'data:text/plain;charset=utf-8,' + encodeURIComponent(outString));
+        $(this).attr("download", "galaxy_data_export.csv");
+    }
+
     /**
      * Handler function for classify button click
      **/
