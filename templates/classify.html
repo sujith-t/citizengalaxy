@@ -9,44 +9,44 @@
         <td>
             <table>
                 <tr>
-                    <td>PETROR 50R</td>
-                    <td width="200"><input type="text" class="txt numeric" id="petror50_r" /></td>
-                    <td>PETROR 90R</td>
-                    <td><input type="text" class="txt numeric" id="petror90_r"/></td>
+                    <td>Petro 50% Ang.Rad R-Band</td>
+                    <td width="200"><input type="text" class="txt numeric" id="petror50_r" placeholder="PETROR 50R (arcsec)"/></td>
+                    <td>Petro 90% Ang.Rad R-Band</td>
+                    <td><input type="text" class="txt numeric" id="petror90_r" placeholder="PETROR 90R (arcsec)"/></td>
                 </tr>
                 <tr>
-                    <td>PETROMAG U</td>
-                    <td><input type="text" class="txt numeric" id="petromag_u" /></td>
-                    <td>PETROMAG G</td>
-                    <td><input type="text" class="txt numeric" id="petromag_g"/></td>
+                    <td>Petro Magnitude U-Band</td>
+                    <td><input type="text" class="txt numeric" id="petromag_u" placeholder="PETROMAG U (mag)"/></td>
+                    <td>Petro Magnitude G-Band</td>
+                    <td><input type="text" class="txt numeric" id="petromag_g" placeholder="PETROMAG G (mag)"/></td>
                 </tr>
                 <tr>
-                    <td>PETROMAG R</td>
-                    <td><input type="text" class="txt numeric" id="petromag_r"/></td>
-                    <td>PETROMAG I</td>
-                    <td><input type="text" class="txt numeric" id="petromag_i"/></td>
+                    <td>Petro Magnitude R-Band</td>
+                    <td><input type="text" class="txt numeric" id="petromag_r" placeholder="PETROMAG R (mag)"/></td>
+                    <td>Petro Magnitude I-Band</td>
+                    <td><input type="text" class="txt numeric" id="petromag_i" placeholder="PETROMAG I (mag)"/></td>
                 </tr>
                 <tr>
-                    <td>PETROMAG Z</td>
-                    <td><input type="text" class="txt numeric" id="petromag_z"/></td>
+                    <td>Petro Magnitude Z-Band</td>
+                    <td><input type="text" class="txt numeric" id="petromag_z" placeholder="PETROMAG Z (mag)"/></td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr><td colspan="4">&nbsp;</td></tr>
                 <tr>
-                    <td>PETROMAGERR U</td>
-                    <td><input type="text" class="txt numeric" id="petromagerr_u"/></td>
-                    <td>PETROMAGERR G</td>
-                    <td><input type="text" class="txt numeric" id="petromagerr_g"/></td>
+                    <td>Petro Magnitude U-Band Error</td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_u" placeholder=" PETROMAGERR U (mag)"/></td>
+                    <td>Petro Magnitude G-Band Error</td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_g" placeholder="PETROMAGERR G (mag)" /></td>
                 </tr>
                 <tr>
-                    <td>PETROMAGERR R</td>
-                    <td><input type="text" class="txt numeric" id="petromagerr_r"/></td>
-                    <td>PETROMAGERR I</td>
-                    <td><input type="text" class="txt numeric" id="petromagerr_i"/></td>
+                    <td>Petro Magnitude R-Band Error</td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_r" placeholder="PETROMAGERR R (mag)"/></td>
+                    <td>Petro Magnitude I-Band Error</td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_i" placeholder="PETROMAGERR I (mag)"/></td>
                 </tr>
                 <tr>
-                    <td>PETROMAGERR Z</td>
-                    <td><input type="text" class="txt numeric" id="petromagerr_z"/></td>
+                    <td>Petro Magnitude Z-Band Error</td>
+                    <td><input type="text" class="txt numeric" id="petromagerr_z" placeholder=" PETROMAGERR Z (mag)"/></td>
                     <td colspan="2">&nbsp;</td>
                 </tr>
             </table>
@@ -62,16 +62,17 @@
         <td colspan="2">
             <table>
                 <tr>
-                    <td class="tag-label">PSFMAG R</td>
-                    <td class="tag-label">FIBERMAG R</td>
-                    <td class="tag-label">DEVMAG R</td>
-                    <td class="tag-label">EXPMAG R</td>
+                    <td class="tag-label">PSF Mag. R-Band</td>
+                    <td class="tag-label">R-Band Spectro Fiber Mag.</td>
+                    <td class="tag-label">R-Band deVaucouleurs Mag.</td>
+                    <td class="tag-label">R-Band Exponential Mag.</td>
                 </tr>
+                <!--https://data.galaxyzoo.org/data/gz2/gz2sample.txt-->
                 <tr>
-                    <td><input type="text" class="txt numeric" id="psfmag_r" /></td>
-                    <td><input type="text" class="txt numeric" id="fibermag_r"/></td>
-                    <td><input type="text" class="txt numeric" id="devmag_r" /></td>
-                    <td><input type="text" class="txt numeric" id="expmag_r" /></td>
+                    <td><input type="text" class="txt numeric" id="psfmag_r" placeholder="PSFMAG R (mag)"/></td>
+                    <td align="center"><input type="text" class="txt numeric" id="fibermag_r" placeholder="FIBERMAG R (mag)"/></td>
+                    <td><input type="text" class="txt numeric" id="devmag_r" placeholder="DEVMAG R (mag)"/></td>
+                    <td><input type="text" class="txt numeric" id="expmag_r" placeholder="EXPMAG R (mag)"/></td>
                 </tr>
                 <tr>
                     <td class="tag-label">DEVMAGERR R</td>
