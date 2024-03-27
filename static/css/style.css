@@ -182,3 +182,11 @@ footer {
     background-color: black;
     cursor: pointer;
 }
+
+.catalog-tbl {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+    font-family: Tahoma, ui-rounded;
+    font-size: 13px;
+}

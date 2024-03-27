@@ -46,7 +46,7 @@ class GalaxyTaxonomyModel(models.Model):
 
 
 class SdssMetadataModel(models.Model):
-    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True, primary_key=True)  # Field name made lowercase.
     ra = models.FloatField(db_column='RA', blank=True, null=True)  # Field name made lowercase.
     declination = models.FloatField(db_column='DECLINATION', blank=True, null=True)  # Field name made lowercase.
     petror50_r = models.FloatField(db_column='PETROR50_R', blank=True, null=True)  # Field name made lowercase.
@@ -104,6 +104,7 @@ class SdssMetadataModel(models.Model):
     petromag_mr_simple_bin = models.IntegerField(db_column='PETROMAG_MR_SIMPLE_BIN', blank=True, null=True)  # Field name made lowercase.
     redshift_simple_bin = models.IntegerField(db_column='REDSHIFT_SIMPLE_BIN', blank=True, null=True)  # Field name made lowercase.
     wvt_bin = models.IntegerField(db_column='WVT_BIN', blank=True, null=True)  # Field name made lowercase.
+    catalog = models.ForeignKey(GalaxyCatalogModel, on_delete=models.CASCADE, db_column='obj_id')
 
     class Meta:
         managed = False

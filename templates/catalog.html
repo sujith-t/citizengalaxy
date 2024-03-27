@@ -1,3 +1,47 @@
 {% include "header.html" %}
-<h1>Catalog</h1>
+<br />
+<table align="center">
+    <tr>
+        <td>
+            <form action="/catalog">
+                <table>
+                    <tr>
+                        <td width="300">Right Ascension (HH:mm:ss)<input type="hidden" name="search_option" value="ra_dec"/></td>
+                        <td>Declination (Deg)</td>
+                    </tr>
+                    <tr>
+                        <td><input size="5" class="txt numeric" id="hour"/> : <input size="5" class="txt numeric" id="minutes" /> : <input size="5" class="txt numeric" id="seconds"/></td>
+                        <td><input size="5" class="txt numeric" id="deg" placeholder="Degrees"/> : <input size="5" class="txt numeric" id="arc_min" placeholder="(arcmin)" /> : <input size="5" class="txt numeric" id="arc_sec" placeholder="(arcsec)" /></td>
+                    </tr>
+                    <tr>
+                        <td><input size="25" class="txt numeric" id="ra" name="ra" /></td>
+                        <td><input size="25" class="txt numeric" id="dec" name="dec" /></td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+</table>
+<table class="catalog-tbl">
+    <tr>
+        <td>Object Id</td>
+        <td>IAU Name</td>
+        <td>Right Ascension</td>
+        <td>Declination</td>
+        <td>Redshift</td>
+        <td>Petro 50% r-Band Ang.Rad</td>
+        <td>Galaxy Class</td>
+    </tr>
+    {% for item in catalog %}
+    <tr>
+        <td>{{item.catalog.obj_id}}</td>
+        <td>{{item.catalog.iauname}}</td>
+        <td>{{item.catalog.ra_string}}</td>
+        <td>{{item.catalog.dec_string}}</td>
+        <td>{{item.redshift}}</td>
+        <td>{{item.petror50_r}}</td>
+        <td>{{item.catalog.obj_class}}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% include "footer.html" %}
