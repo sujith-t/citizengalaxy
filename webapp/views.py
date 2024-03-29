@@ -15,8 +15,15 @@ def classify(request):
 
 
 def catalog(request):
-    page_no = request.GET.get('page', 1)
+    page_no = int(request.GET.get('page', 1))
     locator = GalaxyLocatorServiceImpl()
-    result = locator.get_page_result(page_no)
+    result = []
+    total_pages = 1
 
-    return render(request, 'catalog.html', {'catalog': result})
+    if request.method == "GET":
+        total_pages, result = locator.get_page_result(page_no)
+
+    if request.method == "POST":
+        print("posted",request.POST.get("ra"), request.method)
+
+    return render(request, 'catalog.html', {'catalog': result, 'total_pages': total_pages, 'page_no': page_no})

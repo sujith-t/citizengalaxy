@@ -1,47 +1,61 @@
 {% include "header.html" %}
+{% load static %}
+<script src="{% static 'js/catalog.js' %}"></script>
 <br />
 <table align="center">
     <tr>
-        <td>
-            <form action="/catalog">
-                <table>
+        <td align="center">
+            <form action="/catalog" method="post">
+                {% csrf_token %}
+                <table class="search-box" cellpadding="2">
                     <tr>
-                        <td width="300">Right Ascension (HH:mm:ss)<input type="hidden" name="search_option" value="ra_dec"/></td>
-                        <td>Declination (Deg)</td>
+                        <td width="250" align="center">Right Ascension (HH:mm:ss)<input type="hidden" name="search_option" value="ra_dec"/></td>
+                        <td align="center">Declination (Deg:ArcMin:ArcSec)</td>
                     </tr>
                     <tr>
-                        <td><input size="5" class="txt numeric" id="hour"/> : <input size="5" class="txt numeric" id="minutes" /> : <input size="5" class="txt numeric" id="seconds"/></td>
-                        <td><input size="5" class="txt numeric" id="deg" placeholder="Degrees"/> : <input size="5" class="txt numeric" id="arc_min" placeholder="(arcmin)" /> : <input size="5" class="txt numeric" id="arc_sec" placeholder="(arcsec)" /></td>
+                        <td align="center"><input size="5" class="txt numeric ra-set" id="hour" maxlength="2"/> : <input size="5" class="txt numeric ra-set" id="minutes" maxlength="2" /> : <input size="5" class="txt numeric ra-set" id="seconds"/></td>
+                        <td align="center"><input size="5" class="txt numeric dec-set" id="deg" placeholder="Degrees" maxlength="3"/> : <input size="5" class="txt numeric dec-set" id="arc_min" placeholder="(arcmin)" maxlength="2" /> : <input size="5" class="txt numeric dec-set" id="arc_sec" placeholder="(arcsec)" maxlength="5" /></td>
                     </tr>
                     <tr>
-                        <td><input size="25" class="txt numeric" id="ra" name="ra" /></td>
-                        <td><input size="25" class="txt numeric" id="dec" name="dec" /></td>
+                        <td align="center"><input size="25" class="txt numeric" id="ra" name="ra" /></td>
+                        <td align="center"><input size="25" class="txt numeric" id="dec" name="dec" />&nbsp;<button class="btn">Search</button></td>
                     </tr>
                 </table>
             </form>
         </td>
     </tr>
-</table>
-<table class="catalog-tbl">
     <tr>
-        <td>Object Id</td>
-        <td>IAU Name</td>
-        <td>Right Ascension</td>
-        <td>Declination</td>
-        <td>Redshift</td>
-        <td>Petro 50% r-Band Ang.Rad</td>
-        <td>Galaxy Class</td>
+        <td colspan="2">&nbsp;</td>
     </tr>
-    {% for item in catalog %}
     <tr>
-        <td>{{item.catalog.obj_id}}</td>
-        <td>{{item.catalog.iauname}}</td>
-        <td>{{item.catalog.ra_string}}</td>
-        <td>{{item.catalog.dec_string}}</td>
-        <td>{{item.redshift}}</td>
-        <td>{{item.petror50_r}}</td>
-        <td>{{item.catalog.obj_class}}</td>
+        <td colspan="2" align="right">{% if page_no > 1 %} <a href="?page={{page_no|add:'-1'}}">Previous</a> {% endif %} | Page  <b>{{page_no}}</b> | {% if page_no < total_pages %}<a href="?page={{page_no|add:'1'}}">Next</a>{% endif %}</td>
     </tr>
-    {% endfor %}
+    <tr>
+        <td colspan="2">
+            <table class="catalog-tbl">
+                <tr>
+                    <td width="150" class="header">Object Id</td>
+                    <td width="150" class="header">IAU Name</td>
+                    <td class="header">Right Ascension</td>
+                    <td width="100" class="header">Declination</td>
+                    <td width="100" class="header">Redshift</td>
+                    <td class="header">Petro 50% r-Band Ang.Rad</td>
+                    <td class="header">Galaxy Class</td>
+                </tr>
+                {% for item in catalog %}
+                <tr bgcolor="#f6f9fb">
+                    <td>{{item.catalog.obj_id}}</td>
+                    <td>{{item.catalog.iauname}}</td>
+                    <td align="center">{{item.catalog.ra_string}}</td>
+                    <td>{{item.catalog.dec_string}}</td>
+                    <td align="center">{{item.redshift}}</td>
+                    <td align="center">{{item.petror50_r}}</td>
+                    <td align="center">{{item.catalog.obj_class}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+    </tr>
 </table>
+<br />
 {% include "footer.html" %}

@@ -16,7 +16,7 @@ class GalaxyLocatorServiceImpl:
         paginator = Paginator(query_sets, self.default_page_size)
         page = paginator.page(page_no)
 
-        return page.object_list
+        return paginator.num_pages, page.object_list
 
     def get_details(self, obj_id):
         pass

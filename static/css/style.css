@@ -184,9 +184,41 @@ footer {
 }
 
 .catalog-tbl {
+    border: 1px solid #656d71;
     margin-right: auto;
     margin-left: auto;
     padding: 5px;
     font-family: Tahoma, ui-rounded;
     font-size: 13px;
+}
+
+.catalog-tbl .header {
+    border-bottom: 5px solid #000000;
+    height: 35px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.catalog-tbl td {
+    height: 25px;
+    border-bottom:  1px solid #b9baba;
+}
+
+.search-box {
+    border: 1px solid #656d71;
+    padding: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 35px;
+}
+
+.search-box tr {
+    background-color: #f1f2f3;
+}
+
+.btn {
+    background-image: linear-gradient(#000000, #5e6872, #000000);
+    height: 38px;
+    width: 100px;
+    border-radius: 7px;
+    color: #eaedf0;
 }
