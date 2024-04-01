@@ -44,6 +44,15 @@
                 </tr>
                 {% for item in catalog %}
                 <tr bgcolor="#f6f9fb">
+                    {% if is_searched == 1 %}
+                    <td>{{item.obj_id}}</td>
+                    <td>{{item.iauname}}</td>
+                    <td align="center">{{item.ra_string}}</td>
+                    <td>{{item.dec_string}}</td>
+                    <td align="center">{{item.redshift}}</td>
+                    <td align="center">{{item.petror50_r}}</td>
+                    <td align="center">{{item.obj_class}}</td>
+                    {% else %}
                     <td>{{item.catalog.obj_id}}</td>
                     <td>{{item.catalog.iauname}}</td>
                     <td align="center">{{item.catalog.ra_string}}</td>
@@ -51,6 +60,11 @@
                     <td align="center">{{item.redshift}}</td>
                     <td align="center">{{item.petror50_r}}</td>
                     <td align="center">{{item.catalog.obj_class}}</td>
+                    {% endif %}
+                </tr>
+                {% empty %}
+                <tr bgcolor="#f6f9fb">
+                    <td colspan="7">No items found for this criteria</td>
                 </tr>
                 {% endfor %}
             </table>

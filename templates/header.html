@@ -15,6 +15,17 @@
             //    data: {},
             //    options: {}
             //});
+
+            /**
+             * @author Sujith T
+             * Deus et Scientia Erit Pactum Meum 2024
+             **/
+            $(document).ready(function(){
+
+                $(".top-search-submit").click(function() {
+                    $("#frm_quick_search").submit();
+                });
+            });
         </script>
     </head>
     <body>
@@ -28,18 +39,19 @@
                 <td class="top-menu-link"><a href="/classify">Classify</a></td>
                 <td class="top-menu-link">&nbsp;</td>
                 <td>
-                    <form>
+                    <form method="post" action="/catalog" id="frm_quick_search">
+                        {% csrf_token %}
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td>
-                                    <select class="quick-search-select">
-                                        <option>Quick Search</option>
-                                        <option>Obj ID</option>
-                                        <option>IAU Name</option>
+                                    <select class="quick-search-select" name="search_option">
+                                        <option value="">Quick Search</option>
+                                        <option value="obj_id">Obj ID</option>
+                                        <option value="iauname">IAU Name</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Search Object" class="quick-search-box" />
+                                    <input type="text" placeholder="Search Object" class="quick-search-box" name="search_value" />
                                 </td>
                                 <td class="top-search-submit">
                                     <img src="{% static 'images/search.png' %}" height="24px" width="24px" />

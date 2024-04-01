@@ -24,6 +24,18 @@ def catalog(request):
         total_pages, result = locator.get_page_result(page_no)
 
     if request.method == "POST":
-        print("posted",request.POST.get("ra"), request.method)
+        post_data = {"search_option": request.POST.get('search_option'), "search_value": request.POST.get('search_value')}
+        if post_data["search_option"] == "ra_dec":
+            post_data["ra"] = request.POST.get('ra')
+            post_data["dec"] = request.POST.get('dec')
 
-    return render(request, 'catalog.html', {'catalog': result, 'total_pages': total_pages, 'page_no': page_no})
+        result = locator.search(post_data)
+
+    if page_no < 1 or page_no > total_pages:
+        page_no = 1
+
+    view_data = {'catalog': result, 'total_pages': total_pages, 'page_no': page_no, "is_searched": 0}
+    if request.method == "POST" and request.POST.get('search_option') is not None:
+        view_data["is_searched"] = 1
+
+    return render(request, 'catalog.html', view_data)
