@@ -3,6 +3,8 @@
 from webapp.models import GalaxyCatalogModel, SdssMetadataModel
 
 
+# @author Sujith T
+# Deus et scientia erit pactum meum
 class CatalogSearchResult:
 
     def __init__(self, meta: SdssMetadataModel, catalog: GalaxyCatalogModel):

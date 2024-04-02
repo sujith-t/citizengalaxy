@@ -1,7 +1,8 @@
+import cmath as cm
 from django.core.paginator import Paginator
 
 from webapp.model.dto import CatalogSearchResult
-from webapp.models import SdssMetadataModel, GalaxyCatalogModel, AutoPosteriorBaseModel
+from webapp.models import SdssMetadataModel, GalaxyCatalogModel, IauNameDirectoryModel
 
 
 # @author Sujith T
@@ -32,10 +33,25 @@ class GalaxyLocatorServiceImpl:
                 result.append(search_result)
 
         if param['search_option'] == "iauname":
-            galaxy_catalogs = GalaxyCatalogModel.objects.filter(obj_id=param["search_value"]).values()
-            iau_dir = AutoPosteriorBaseModel.objects.filter(iauname=param["search_value"]).first()
+            galaxy_catalogs = GalaxyCatalogModel.objects.filter(iauname=param["search_value"])
+            iau_dir = IauNameDirectoryModel.objects.filter(iauname=param["search_value"]).first()
 
-            return galaxy_catalogs
+            if iau_dir is None or galaxy_catalogs.count() == 0:
+                return []
+
+            angular_distances = {}
+            for item in galaxy_catalogs:
+                cos_distance = ((cm.sin(iau_dir.declination) * cm.sin(item.declination))
+                                + (cm.cos(iau_dir.declination) * cm.cos(item.declination) * cm.cos(
+                            iau_dir.ra - item.ra)))
+                angular_distances[cos_distance.real] = item
+
+            # we get the max cosine to identify the closest object
+            angular_closer_key = max(angular_distances)
+            catalog = angular_distances[angular_closer_key]
+            sdss_meta = SdssMetadataModel.objects.filter(obj_id=catalog.obj_id).first()
+            search_result = CatalogSearchResult(sdss_meta, catalog)
+            result.append(search_result)
 
         return result
 

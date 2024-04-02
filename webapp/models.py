@@ -1,8 +1,9 @@
 from django.db import models
 
+
 # @author Sujith T
 # Deus et scientia erit pactum meum
-class AutoPosteriorBaseModel(models.Model):
+class IauNameDirectoryModel(models.Model):
     iauname = models.CharField(primary_key=True, max_length=20)
     ra = models.FloatField(blank=True, null=True)
     declination = models.FloatField(blank=True, null=True)
@@ -19,6 +20,7 @@ class AutoPosteriorBaseModel(models.Model):
         db_table = 'auto_posterior_base'
 
 
+# model to retrieve galaxy_catalog table
 class GalaxyCatalogModel(models.Model):
     obj_id = models.CharField(primary_key=True, max_length=20)
     iauname = models.CharField(max_length=20, blank=True, null=True, )
@@ -34,6 +36,7 @@ class GalaxyCatalogModel(models.Model):
         db_table = 'galaxy_catalog'
 
 
+# Model to retrieve HTF taxonomy
 class GalaxyTaxonomyModel(models.Model):
     code = models.CharField(max_length=10, blank=True, null=True)
     description = models.CharField(max_length=50, blank=True, null=True)
@@ -45,8 +48,10 @@ class GalaxyTaxonomyModel(models.Model):
         db_table = 'galaxy_taxanomy'
 
 
+# Model to retrieve sdss_meta table
 class SdssMetadataModel(models.Model):
-    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True, primary_key=True)  # Field name made lowercase.
+    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True,
+                              primary_key=True)  # Field name made lowercase.
     ra = models.FloatField(db_column='RA', blank=True, null=True)  # Field name made lowercase.
     declination = models.FloatField(db_column='DECLINATION', blank=True, null=True)  # Field name made lowercase.
     petror50_r = models.FloatField(db_column='PETROR50_R', blank=True, null=True)  # Field name made lowercase.
@@ -100,9 +105,12 @@ class SdssMetadataModel(models.Model):
     petromagerr_mz = models.FloatField(db_column='PETROMAGERR_MZ', blank=True, null=True)  # Field name made lowercase.
     petror50_r_kpc = models.FloatField(db_column='PETROR50_R_KPC', blank=True, null=True)  # Field name made lowercase.
     region = models.IntegerField(db_column='REGION', blank=True, null=True)  # Field name made lowercase.
-    petror50_r_kpc_simple_bin = models.IntegerField(db_column='PETROR50_R_KPC_SIMPLE_BIN', blank=True, null=True)  # Field name made lowercase.
-    petromag_mr_simple_bin = models.IntegerField(db_column='PETROMAG_MR_SIMPLE_BIN', blank=True, null=True)  # Field name made lowercase.
-    redshift_simple_bin = models.IntegerField(db_column='REDSHIFT_SIMPLE_BIN', blank=True, null=True)  # Field name made lowercase.
+    petror50_r_kpc_simple_bin = models.IntegerField(db_column='PETROR50_R_KPC_SIMPLE_BIN', blank=True,
+                                                    null=True)  # Field name made lowercase.
+    petromag_mr_simple_bin = models.IntegerField(db_column='PETROMAG_MR_SIMPLE_BIN', blank=True,
+                                                 null=True)  # Field name made lowercase.
+    redshift_simple_bin = models.IntegerField(db_column='REDSHIFT_SIMPLE_BIN', blank=True,
+                                              null=True)  # Field name made lowercase.
     wvt_bin = models.IntegerField(db_column='WVT_BIN', blank=True, null=True)  # Field name made lowercase.
     catalog = models.ForeignKey(GalaxyCatalogModel, on_delete=models.CASCADE, db_column='obj_id')
 
