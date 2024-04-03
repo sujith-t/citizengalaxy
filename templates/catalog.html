@@ -17,8 +17,8 @@
                         <td align="center"><input size="5" class="txt numeric dec-set" id="deg" placeholder="Degrees" maxlength="3"/> : <input size="5" class="txt numeric dec-set" id="arc_min" placeholder="(arcmin)" maxlength="2" /> : <input size="5" class="txt numeric dec-set" id="arc_sec" placeholder="(arcsec)" maxlength="5" /></td>
                     </tr>
                     <tr>
-                        <td align="center"><input size="25" class="txt numeric" id="ra" name="ra" /></td>
-                        <td align="center"><input size="25" class="txt numeric" id="dec" name="dec" />&nbsp;<button class="btn">Search</button></td>
+                        <td align="center"><input size="25" class="txt numeric" id="ra" name="ra" value="{{ post_data.ra }}" /></td>
+                        <td align="center"><input size="25" class="txt numeric" id="dec" name="dec" value="{{ post_data.dec }}"/>&nbsp;<button class="btn">Search</button></td>
                     </tr>
                 </table>
             </form>
@@ -47,16 +47,16 @@
                     {% if is_searched == 1 %}
                     <td>{{item.obj_id}}</td>
                     <td>{{item.iauname}}</td>
-                    <td align="center">{{item.ra_string}}</td>
-                    <td>{{item.dec_string}}</td>
+                    <td align="center">{{item.ra}}</td>
+                    <td align="center">{{item.declination}}</td>
                     <td align="center">{{item.redshift}}</td>
                     <td align="center">{{item.petror50_r}}</td>
                     <td align="center">{{item.obj_class}}</td>
                     {% else %}
                     <td>{{item.catalog.obj_id}}</td>
                     <td>{{item.catalog.iauname}}</td>
-                    <td align="center">{{item.catalog.ra_string}}</td>
-                    <td>{{item.catalog.dec_string}}</td>
+                    <td align="center">{{item.catalog.ra}}</td>
+                    <td align="center">{{item.catalog.declination}}</td>
                     <td align="center">{{item.redshift}}</td>
                     <td align="center">{{item.petror50_r}}</td>
                     <td align="center">{{item.catalog.obj_class}}</td>

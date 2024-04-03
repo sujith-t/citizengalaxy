@@ -44,7 +44,8 @@ a:hover {
 
 .quick-search-box {
     font-family: Arial, ui-rounded;
-    font-size: 12px;
+    text-align: center;
+    font-size: 15px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border: 1px solid gray;
@@ -54,7 +55,6 @@ a:hover {
     padding-bottom: 5px;
     height: 23px;
     width: 250px;
-    text-align: left;
     color: dimgray;
 }
 

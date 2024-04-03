@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .service.search import GalaxyLocatorServiceImpl
 
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -15,6 +16,7 @@ def classify(request):
 
 
 def catalog(request):
+    post_data = {}
     page_no = int(request.GET.get('page', 1))
     locator = GalaxyLocatorServiceImpl()
     result = []
@@ -24,7 +26,8 @@ def catalog(request):
         total_pages, result = locator.get_page_result(page_no)
 
     if request.method == "POST":
-        post_data = {"search_option": request.POST.get('search_option'), "search_value": request.POST.get('search_value')}
+        post_data = {"search_option": request.POST.get('search_option'),
+                     "search_value": request.POST.get('search_value')}
         if post_data["search_option"] == "ra_dec":
             post_data["ra"] = request.POST.get('ra')
             post_data["dec"] = request.POST.get('dec')
@@ -38,4 +41,5 @@ def catalog(request):
     if request.method == "POST" and request.POST.get('search_option') is not None:
         view_data["is_searched"] = 1
 
+    view_data["post_data"] = post_data
     return render(request, 'catalog.html', view_data)

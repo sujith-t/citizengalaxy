@@ -10,8 +10,8 @@ class CatalogSearchResult:
     def __init__(self, meta: SdssMetadataModel, catalog: GalaxyCatalogModel):
         self.obj_id = catalog.obj_id
         self.iauname = catalog.iauname
-        self.ra_string = catalog.ra_string
-        self.dec_string = catalog.dec_string
+        self.ra = catalog.ra
+        self.declination = catalog.declination
         self.obj_class = catalog.obj_class
         self.redshift = None
         self.petror50_r = None

@@ -46,12 +46,12 @@
                                 <td>
                                     <select class="quick-search-select" name="search_option">
                                         <option value="">Quick Search</option>
-                                        <option value="obj_id">Obj ID</option>
-                                        <option value="iauname">IAU Name</option>
+                                        <option value="obj_id" {% if post_data.search_option == 'obj_id' %} selected {% endif %} >Obj ID</option>
+                                        <option value="iauname" {% if post_data.search_option == 'iauname' %} selected {% endif %} >IAU Name</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Search Object" class="quick-search-box" name="search_value" />
+                                    <input type="text" placeholder="Search Object" class="quick-search-box" name="search_value" value="{{ post_data.search_value }}"/>
                                 </td>
                                 <td class="top-search-submit">
                                     <img src="{% static 'images/search.png' %}" height="24px" width="24px" />
