@@ -1,5 +1,6 @@
 import cmath as cm
 from django.core.paginator import Paginator
+import json
 
 from webapp.model.dto import CatalogSearchResult
 from webapp.models import SdssMetadataModel, GalaxyCatalogModel, IauNameDirectoryModel
@@ -21,7 +22,7 @@ class GalaxyLocatorServiceImpl:
 
         return paginator.num_pages, page.object_list
 
-    def search(self, param: dict):
+    def search(self, param: dict, is_json=False):
         result = []
 
         def _compute_cosine(source_dec: float, source_ra: float, catalogs: list):
@@ -74,6 +75,8 @@ class GalaxyLocatorServiceImpl:
                 catalog = angular_distances[k]
                 sdss_meta = SdssMetadataModel.objects.filter(obj_id=catalog.obj_id).first()
                 search_result = CatalogSearchResult(sdss_meta, catalog)
+                if is_json:
+                    search_result = json.loads(json.dumps(search_result.__dict__))
                 result.append(search_result)
 
         return result
