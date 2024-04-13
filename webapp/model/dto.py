@@ -1,10 +1,8 @@
-# @author Sujith T
-# Deus et Scientia Erit Pactum Meum 2024
 from webapp.models import GalaxyCatalogModel, SdssMetadataModel
 
 
 # @author Sujith T
-# Deus et scientia erit pactum meum
+# Deus et Scientia Erit Pactum Meum 2024
 class CatalogSearchResult:
 
     def __init__(self, meta: SdssMetadataModel, catalog: GalaxyCatalogModel):

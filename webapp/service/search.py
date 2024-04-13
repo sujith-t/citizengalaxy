@@ -30,7 +30,7 @@ class GalaxyLocatorServiceImpl:
             for item in catalogs:
                 cos_distance = ((cm.sin(source_dec) * cm.sin(item.declination))
                                 + (cm.cos(source_dec) * cm.cos(item.declination)
-                                * cm.cos(source_ra - item.ra)))
+                                   * cm.cos(source_ra - item.ra)))
                 ang_dist[cos_distance.real] = item
             return ang_dist
 
@@ -53,10 +53,16 @@ class GalaxyLocatorServiceImpl:
 
             # we get the max cosine to identify the closest object acos > 0.99 nearing 1 = 0deg
             angular_closer_key = max(angular_distances)
+            search_result = None
             if angular_closer_key > 0.99:
                 catalog = angular_distances[angular_closer_key]
                 sdss_meta = SdssMetadataModel.objects.filter(obj_id=catalog.obj_id).first()
                 search_result = CatalogSearchResult(sdss_meta, catalog)
+
+            if is_json:
+                search_result = json.loads(json.dumps(search_result.__dict__))
+
+            if search_result is not None:
                 result.append(search_result)
 
         if param['search_option'] == "ra_dec":
@@ -77,6 +83,7 @@ class GalaxyLocatorServiceImpl:
                 search_result = CatalogSearchResult(sdss_meta, catalog)
                 if is_json:
                     search_result = json.loads(json.dumps(search_result.__dict__))
+
                 result.append(search_result)
 
         return result
