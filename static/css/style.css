@@ -223,3 +223,59 @@ footer {
     border-radius: 7px;
     color: #eaedf0;
 }
+
+.iauname-headline {
+    font-size: 40px;
+    font-family: Arial, Tahoma, ui-rounded;
+    text-align: left;
+}
+
+.clz-division {
+    width: 225px;
+    height: 225px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.intro-tbl {
+    font-family: Arial, Tahoma, ui-rounded;
+}
+
+.clz-major {
+    font-family: Arial, Tahoma, ui-rounded;
+    text-align: center;
+    font-size: 100px;
+    border-bottom: 3px solid #000000;
+}
+
+.clz-minor {
+    font-family: Arial, Tahoma, ui-rounded;
+    text-align: center;
+    font-size: 30px;
+}
+
+.td-info {
+    height: 25px;
+    color: #3e4d4d;
+    font-family: Arial, Tahoma, ui-rounded;
+}
+
+.ra-hr-rep {
+    color: #FF5733;
+    font-size: 12px;
+    border-radius: 15px;
+    margin: 5px;
+    background-color: #febcbb;
+    padding: 7px;
+    height: 30px;
+}
+
+.ra-deg-rep {
+    color: #8f8787;
+    font-size: 12px;
+    border-radius: 15px;
+    margin: 5px;
+    background-color: #d6cfcf;
+    padding: 7px;
+    height: 30px;
+}

@@ -1,0 +1,49 @@
+{% include "header.html" %}
+{% load static %}
+<br />
+{% if galaxy is None %}
+<h2>Sorry No Data Available</h2>
+{% else %}
+<table align="center" width="900px" cellpadding="2px">
+    <tr>
+        <td class="clz-division">
+            <table width="150" align="center">
+                <tr>
+                    <td class="clz-major">Sba</td>
+                </tr>
+                <tr>
+                    <td class="clz-minor">{{galaxy.obj_class}}</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="intro-tbl">
+                <tr>
+                    <td class="iauname-headline" colspan="2">&nbsp;{{galaxy.iauname}}</td>
+                </tr>
+                <tr>
+                    <td class="td-info">Right Ascension</td>
+                    <td><span class="ra-hr-rep">{{galaxy.ra_string}}</span><span class="ra-deg-rep">{{galaxy.ra}} Deg</span></td>
+                </tr>
+                <tr>
+                    <td class="td-info">Declination</td>
+                    <td><span>{{galaxy.dec_string}}</span><span>{{galaxy.declination}} Deg</span></td>
+                </tr>
+                <tr>
+                    <td class="td-info">Redshift</td>
+                    <td>aa</td>
+                </tr>
+                <tr>
+                    <td class="td-info">Petro50</td>
+                    <td>aa</td>
+                </tr>
+                <tr>
+                    <td class="td-info">Petro90</td>
+                    <td>aaa</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+{% endif %}
+{% include "footer.html" %}

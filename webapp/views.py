@@ -43,3 +43,11 @@ def catalog(request):
 
     view_data["post_data"] = post_data
     return render(request, 'catalog.html', view_data)
+
+
+def catalog_details(request, obj_id):
+    view_data = {}
+    locator = GalaxyLocatorServiceImpl()
+    view_data["galaxy"] = locator.get_details(obj_id)
+
+    return render(request, 'catalog_detail.html', view_data)
