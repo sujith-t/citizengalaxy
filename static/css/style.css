@@ -239,6 +239,7 @@ footer {
 
 .intro-tbl {
     font-family: Arial, Tahoma, ui-rounded;
+    font-size: 14px;
 }
 
 .clz-major {
@@ -260,6 +261,13 @@ footer {
     font-family: Arial, Tahoma, ui-rounded;
 }
 
+.td-info-head {
+    height: 25px;
+    color: #3e4d4d;
+    font-family: Arial, Tahoma, ui-rounded;
+    border-right: 1px solid #3e4d4d;
+}
+
 .ra-hr-rep {
     color: #FF5733;
     font-size: 12px;
@@ -270,7 +278,17 @@ footer {
     height: 30px;
 }
 
-.ra-deg-rep {
+.dec-rep {
+    background-color: #8bd4fb;
+    color:  #36637b;
+    font-size: 12px;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 7px;
+    height: 30px;
+}
+
+.ra-deg-rep, .dec-deg-rep {
     color: #8f8787;
     font-size: 12px;
     border-radius: 15px;
@@ -278,4 +296,10 @@ footer {
     background-color: #d6cfcf;
     padding: 7px;
     height: 30px;
+}
+
+.header-title {
+    height: 25px;
+    color: #3e4d4d;
+    border-bottom:  1px solid #3e4d4d;
 }

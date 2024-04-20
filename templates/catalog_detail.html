@@ -1,5 +1,7 @@
 {% include "header.html" %}
 {% load static %}
+<script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
+<script src="{% static 'js/catalog_detail.js' %}"></script>
 <br />
 {% if galaxy is None %}
 <h2>Sorry No Data Available</h2>
@@ -12,36 +14,101 @@
                     <td class="clz-major">Sba</td>
                 </tr>
                 <tr>
-                    <td class="clz-minor">{{galaxy.obj_class}}</td>
+                    <td class="clz-minor">{{galaxy.obj_class}}<input type="hidden" id="clz-minor" value="{{galaxy.obj_class}}"/></td>
                 </tr>
             </table>
         </td>
         <td>
             <table class="intro-tbl">
                 <tr>
-                    <td class="iauname-headline" colspan="2">&nbsp;{{galaxy.iauname}}</td>
+                    <td class="iauname-headline" colspan="2">&nbsp;{{galaxy.iauname}}<input type="hidden" id="iauname" value="{{galaxy.iauname}}"/></td>
                 </tr>
                 <tr>
                     <td class="td-info">Right Ascension</td>
-                    <td><span class="ra-hr-rep">{{galaxy.ra_string}}</span><span class="ra-deg-rep">{{galaxy.ra}} Deg</span></td>
+                    <td><span class="ra-hr-rep">{{galaxy.ra_string}}</span><span class="ra-deg-rep">{{galaxy.ra}} Deg</span><input type="hidden" id="ra" value="{{galaxy.ra}}"/></td>
                 </tr>
                 <tr>
                     <td class="td-info">Declination</td>
-                    <td><span>{{galaxy.dec_string}}</span><span>{{galaxy.declination}} Deg</span></td>
+                    <td><span class="dec-rep">{{galaxy.dec_string}}</span><span class="dec-deg-rep">{{galaxy.declination}} Deg</span><input type="hidden" id="dec" value="{{galaxy.declination}}"/></td>
                 </tr>
                 <tr>
                     <td class="td-info">Redshift</td>
-                    <td>aa</td>
+                    <td>{{galaxy.redshift}}</td>
                 </tr>
                 <tr>
-                    <td class="td-info">Petro50</td>
-                    <td>aa</td>
+                    <td class="td-info">Petro 50% R-Band</td>
+                    <td>{{galaxy.petror50_r}}</td>
                 </tr>
                 <tr>
-                    <td class="td-info">Petro90</td>
-                    <td>aaa</td>
+                    <td class="td-info">Petro 90% R-Band</td>
+                    <td>{{galaxy.petror90_r}}</td>
                 </tr>
             </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td><div id="aladin-lite-div" style="width:600px;height:380px;"></div></td>
+                    <td valign="top">
+                        <table class="intro-tbl">
+                            <tr>
+                                <td colspan="2" class="td-info header-title">Apparent Quantities From Photometry</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Surface Brightness Petro 50% R-Band</td>
+                                <td class="td-info">1212 mag/arcsec<sup>2</sup></td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Composite Model in R-Band</td>
+                                <td class="td-info">1212 mag</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Composite Model Error in R-Band</td>
+                                <td class="td-info">3232 mag</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="td-info header-title">Redshift Quantities</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Spectroscopic Redshift</td>
+                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Spectroscopic Redshift Error</td>
+                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="td-info header-title">Bin Numbers</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Physical Size of Galaxy</td>
+                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Luminosity of Galaxy</td>
+                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Redshift of Galaxy</td>
+                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td class="td-info-head">Weighted Voronoi Tessellation</td>
+                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
         </td>
     </tr>
 </table>

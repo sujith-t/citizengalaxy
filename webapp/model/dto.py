@@ -41,3 +41,10 @@ class CatalogDetail(CatalogSearchResult):
         self.dec_string = str(math.floor(dec_tmp) * factor) + "° "
         dec_tmp = (dec_tmp - math.floor(dec_tmp)) * 60
         self.dec_string += str(math.floor(dec_tmp)) + "' "
+        dec_tmp = (dec_tmp - math.floor(dec_tmp)) * 60
+        self.dec_string += str(math.floor(dec_tmp)) + '" '
+        dec_tmp = round((dec_tmp - math.floor(dec_tmp)) * 1000, 4)
+        self.dec_string += str(dec_tmp) + "ms"
+
+        self.petror50_r = meta.petror50_r
+        self.petror90_r = meta.petror90_r
