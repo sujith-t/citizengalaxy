@@ -11,7 +11,7 @@
         <td class="clz-division">
             <table width="150" align="center">
                 <tr>
-                    <td class="clz-major">Sba</td>
+                    <td class="clz-major">{{galaxy.taxonomy_code}}</td>
                 </tr>
                 <tr>
                     <td class="clz-minor">{{galaxy.obj_class}}<input type="hidden" id="clz-minor" value="{{galaxy.obj_class}}"/></td>
@@ -50,7 +50,7 @@
         <td colspan="2">
             <table>
                 <tr>
-                    <td><div id="aladin-lite-div" style="width:600px;height:380px;"></div></td>
+                    <td valign="top"><div id="aladin-lite-div" style="width:600px;height:380px;"></div></td>
                     <td valign="top">
                         <table class="intro-tbl">
                             <tr>
@@ -58,15 +58,15 @@
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td class="td-info-head">Surface Brightness Petro 50% R-Band</td>
-                                <td class="td-info">1212 mag/arcsec<sup>2</sup></td>
+                                <td class="td-info">{{galaxy.mu50_r}} mag/arcsec<sup>2</sup></td>
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td class="td-info-head">Composite Model in R-Band</td>
-                                <td class="td-info">1212 mag</td>
+                                <td class="td-info">{{galaxy.cmodelmag_r}} mag</td>
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td class="td-info-head">Composite Model Error in R-Band</td>
-                                <td class="td-info">3232 mag</td>
+                                <td class="td-info">{{galaxy.cmodelmagerr_r}} mag</td>
                             </tr>
                             <tr>
                                 <td colspan="2">&nbsp;</td>
@@ -80,7 +80,7 @@
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td class="td-info-head">Spectroscopic Redshift Error</td>
-                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                                <td class="td-info" align="center">{{galaxy.redshifterr}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2">&nbsp;</td>
@@ -90,25 +90,66 @@
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td class="td-info-head">Physical Size of Galaxy</td>
-                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                                <td class="td-info" align="center">{{galaxy.petror50_r_kpc_simple_bin}}</td>
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td class="td-info-head">Luminosity of Galaxy</td>
-                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                                <td class="td-info" align="center">{{galaxy.petromag_mr_simple_bin}}</td>
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td class="td-info-head">Redshift of Galaxy</td>
-                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                                <td class="td-info" align="center">{{galaxy.redshift_simple_bin}}</td>
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td class="td-info-head">Weighted Voronoi Tessellation</td>
-                                <td class="td-info" align="center">{{galaxy.redshift}}</td>
+                                <td class="td-info" align="center">{{galaxy.wvt_bin}}</td>
                             </tr>
                         </table>
                     </td>
                 </tr>
             </table>
-
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td>
+                        <table class="catalog-tbl">
+                            <tr>
+                                <td colspan="6" class="header">Petrosian Apparent Magnitude and Error</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td width="60"><b>U-Band</b></td>
+                                <td width="60"><b>G-Band</b></td>
+                                <td width="60"><b>R-Band</b></td>
+                                <td width="60"><b>I-Band</b></td>
+                                <td width="60"><b>Z-Band</b></td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td>Magnitude</td>
+                                <td>0.22</td>
+                                <td>0.22</td>
+                                <td>0.22</td>
+                                <td>0.22</td>
+                                <td>0.22</td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td>Error</td>
+                                <td>0.33</td>
+                                <td>0.33</td>
+                                <td>0.33</td>
+                                <td>0.33</td>
+                                <td>0.33</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        table2
+                    </td>
+                </tr>
+            </table>
         </td>
     </tr>
 </table>

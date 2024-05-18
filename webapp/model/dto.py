@@ -1,5 +1,5 @@
 import math
-from webapp.models import GalaxyCatalogModel, SdssMetadataModel
+from webapp.models import GalaxyCatalogModel, SdssMetadataModel, GalaxyTaxonomyModel
 
 
 # @author Sujith T
@@ -20,8 +20,8 @@ class CatalogSearchResult:
             self.petror50_r = meta.petror50_r
 
 
-class CatalogDetail(CatalogSearchResult):
-    def __init__(self, meta: SdssMetadataModel, catalog: GalaxyCatalogModel):
+class GalaxyDetail(CatalogSearchResult):
+    def __init__(self, meta: SdssMetadataModel, catalog: GalaxyCatalogModel, taxonomy: GalaxyTaxonomyModel):
         super().__init__(meta, catalog)
 
         ra_tmp = catalog.ra / 15
@@ -48,3 +48,14 @@ class CatalogDetail(CatalogSearchResult):
 
         self.petror50_r = meta.petror50_r
         self.petror90_r = meta.petror90_r
+
+        self.wvt_bin = meta.wvt_bin
+        self.redshift_simple_bin = meta.redshift_simple_bin
+        self.petror50_r_kpc_simple_bin = meta.petror50_r_kpc_simple_bin
+        self.petromag_mr_simple_bin = meta.petromag_mr_simple_bin
+        self.redshifterr = meta.redshifterr
+        self.mu50_r = meta.mu50_r
+        self.cmodelmag_r = meta.cmodelmag_r
+        self.cmodelmagerr_r = meta.cmodelmagerr_r
+
+        self.taxonomy_code = taxonomy.code

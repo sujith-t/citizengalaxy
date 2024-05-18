@@ -38,6 +38,7 @@ class GalaxyCatalogModel(models.Model):
 
 # Model to retrieve HTF taxonomy
 class GalaxyTaxonomyModel(models.Model):
+    id = models.IntegerField(primary_key=True)
     code = models.CharField(max_length=10, blank=True, null=True)
     description = models.CharField(max_length=50, blank=True, null=True)
     parent_id = models.IntegerField(blank=True, null=True)

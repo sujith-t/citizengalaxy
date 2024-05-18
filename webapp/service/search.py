@@ -2,8 +2,8 @@ import cmath as cm
 from django.core.paginator import Paginator
 import json
 
-from webapp.model.dto import CatalogSearchResult, CatalogDetail
-from webapp.models import SdssMetadataModel, GalaxyCatalogModel, IauNameDirectoryModel
+from webapp.model.dto import CatalogSearchResult, GalaxyDetail
+from webapp.models import SdssMetadataModel, GalaxyCatalogModel, IauNameDirectoryModel, GalaxyTaxonomyModel
 
 
 # @author Sujith T
@@ -88,11 +88,13 @@ class GalaxyLocatorServiceImpl:
 
         return result
 
-    def get_details(self, obj_id) -> CatalogDetail:
+    def get_details(self, obj_id) -> GalaxyDetail:
 
         galaxy_catalog = GalaxyCatalogModel.objects.filter(obj_id=obj_id).first()
         if galaxy_catalog is None:
             return
 
         sdss_meta = SdssMetadataModel.objects.filter(obj_id=obj_id).first()
-        return CatalogDetail(sdss_meta, galaxy_catalog)
+        taxonomy = GalaxyTaxonomyModel.objects.filter(id=galaxy_catalog.taxanomy_id).first()
+
+        return GalaxyDetail(sdss_meta, galaxy_catalog, taxonomy)
