@@ -59,3 +59,27 @@ class GalaxyDetail(CatalogSearchResult):
         self.cmodelmagerr_r = meta.cmodelmagerr_r
 
         self.taxonomy_code = taxonomy.code
+
+        self.petromag_u = meta.petromag_u
+        self.petromag_g = meta.petromag_g
+        self.petromag_r = meta.petromag_r
+        self.petromag_i = meta.petromag_i
+        self.petromag_z = meta.petromag_z
+
+        self.petromagerr_u = meta.petromagerr_u
+        self.petromagerr_g = meta.petromagerr_g
+        self.petromagerr_r = meta.petromagerr_r
+        self.petromagerr_i = meta.petromagerr_i
+        self.petromagerr_z = meta.petromagerr_z
+
+        self.petromag_mu = meta.petromag_mu
+        self.petromag_mg = meta.petromag_mg
+        self.petromag_mr = meta.petromag_mr
+        self.petromag_mi = meta.petromag_mi
+        self.petromag_mz = meta.petromag_mz
+
+        self.petromagerr_mu = meta.petromagerr_mu
+        self.petromagerr_mg = meta.petromagerr_mg
+        self.petromagerr_mr = meta.petromagerr_mr
+        self.petromagerr_mi = meta.petromagerr_mi
+        self.petromagerr_mz = meta.petromagerr_mz
