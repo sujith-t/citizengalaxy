@@ -40,6 +40,8 @@ class GalaxyLocatorServiceImpl:
 
             if galaxy_catalog is not None:
                 search_result = CatalogSearchResult(sdss_meta, galaxy_catalog)
+                if is_json:
+                    search_result = json.loads(json.dumps(search_result.__dict__))
                 result.append(search_result)
 
         if param['search_option'] == "iauname":
@@ -88,13 +90,18 @@ class GalaxyLocatorServiceImpl:
 
         return result
 
-    def get_details(self, obj_id) -> GalaxyDetail:
+    def get_details(self, param: dict, is_json=False) -> GalaxyDetail:
 
-        galaxy_catalog = GalaxyCatalogModel.objects.filter(obj_id=obj_id).first()
-        if galaxy_catalog is None:
+        search_result = self.search(param)
+        if len(search_result) == 0:
             return
 
-        sdss_meta = SdssMetadataModel.objects.filter(obj_id=obj_id).first()
+        galaxy_catalog = GalaxyCatalogModel.objects.filter(obj_id=search_result[0].obj_id).first()
+        sdss_meta = SdssMetadataModel.objects.filter(obj_id=search_result[0].obj_id).first()
         taxonomy = GalaxyTaxonomyModel.objects.filter(id=galaxy_catalog.taxanomy_id).first()
 
-        return GalaxyDetail(sdss_meta, galaxy_catalog, taxonomy)
+        result = GalaxyDetail(sdss_meta, galaxy_catalog, taxonomy)
+        if is_json:
+            result = json.loads(json.dumps(result.__dict__))
+
+        return result

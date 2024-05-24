@@ -40,6 +40,9 @@ def basic_search(request, option, identifier):
     if len(items) > 0:
         json_obj = items[0]
 
+    if json_obj is None:
+        return Response(status=204)
+
     return JsonResponse(json_obj, safe=False)
 
 
@@ -54,5 +57,30 @@ def ra_dec_search(request):
     locator = GalaxyLocatorServiceImpl()
 
     items = locator.search(post_data, is_json=True)
+    http_code = 200
+    if len(items) == 0:
+        http_code = 204
 
-    return Response(items)
+    return Response(items, status=http_code)
+
+
+@api_view(["GET"])
+def catalog_details(request, option, identifier):
+
+    if option not in ['id', 'iauname'] or identifier is None:
+        return Response({"message": "Invalid search parameters", "status": 400,
+                         "errors": ["provided values: %s (option), %s (identifier)" % (option, identifier)]},
+                        status=400)
+
+    search_param = {"search_value": identifier, "search_option": "obj_id"}
+    if option != "id":
+        search_param["search_option"] = option
+
+    locator = GalaxyLocatorServiceImpl()
+    item = locator.get_details(search_param, is_json=True)
+
+    http_code = 200
+    if item is None:
+        http_code = 204
+
+    return Response(item, status=http_code)

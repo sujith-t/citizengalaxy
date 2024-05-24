@@ -48,6 +48,7 @@ def catalog(request):
 def catalog_details(request, obj_id):
     view_data = {}
     locator = GalaxyLocatorServiceImpl()
-    view_data["galaxy"] = locator.get_details(obj_id)
+    search_param = {"search_value": obj_id, "search_option": "obj_id"}
+    view_data["galaxy"] = locator.get_details(search_param)
 
     return render(request, 'catalog_detail.html', view_data)
