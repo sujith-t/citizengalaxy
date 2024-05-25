@@ -99,24 +99,6 @@ $(document).ready(function(){
             data: payload,
             async: false,
             success: function (data) {
-                //when error messages received from the server
-                if (data.hasOwnProperty("status") && data.status === HTTP_ERROR_CODE) {
-                    //we restore the visual look
-                    $(".final-label").css("background-image", "linear-gradient(#bfe9f5, #74dbf7)");
-                    $(clzTextLabel).hide();
-                    $(clzImgSelector).attr("src", "/static/images/planet.png");
-                    $(clzImgSelector).show();
-
-                    let entries = Object.entries(data.errors)
-                    let errorMsgs = "";
-                    entries.map( ([key, val] = entry) => {
-                        errorMsgs += (key + " - " + val[0] + "\n");
-                    });
-
-                    alert(errorMsgs);
-                    return;
-                }
-
                 let clazz = data[0];
 
                 //if SB types
@@ -140,6 +122,22 @@ $(document).ready(function(){
                 alert("Failed in processing for galaxy type identification");
                 console.log("Failure....");
                 console.log(response);
+            },
+            error: function (jqXHR, status) {
+                //we restore the visual look
+                $(".final-label").css("background-image", "linear-gradient(#bfe9f5, #74dbf7)");
+                $(clzTextLabel).hide();
+                $(clzImgSelector).attr("src", "/static/images/planet.png");
+                $(clzImgSelector).show();
+
+                let data = JSON.parse(jqXHR.responseText);
+                let entries = Object.entries(data.errors)
+                let errorMsgs = "";
+                entries.map( ([key, val] = entry) => {
+                    errorMsgs += (key + " - " + val[0] + "\n");
+                });
+
+                alert(errorMsgs);
             }
         });
 

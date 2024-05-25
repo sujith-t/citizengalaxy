@@ -20,7 +20,7 @@ def classify_galaxy(request):
         clazz = classifier.predict_galaxy_class(serializer.data)
         return Response([clazz], status=200)
     else:
-        return Response({"message": "Invalid data posted", "status": 400, "errors": serializer.errors})
+        return Response({"message": "Invalid data posted", "status": 400, "errors": serializer.errors}, status=400)
 
 
 @api_view(["GET"])
