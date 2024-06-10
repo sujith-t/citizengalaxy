@@ -83,3 +83,21 @@ class GalaxyDetail(CatalogSearchResult):
         self.petromagerr_mr = meta.petromagerr_mr
         self.petromagerr_mi = meta.petromagerr_mi
         self.petromagerr_mz = meta.petromagerr_mz
+
+        self.extinction_u = meta.extinction_u
+        self.extinction_g = meta.extinction_g
+        self.extinction_r = meta.extinction_r
+        self.extinction_i = meta.extinction_i
+        self.extinction_z = meta.extinction_z
+
+        self.rowc_u = meta.rowc_u
+        self.rowc_g = meta.rowc_g
+        self.rowc_r = meta.rowc_r
+        self.rowc_i = meta.rowc_i
+        self.rowc_z = meta.rowc_z
+
+        self.colc_u = meta.colc_u
+        self.colc_g = meta.colc_g
+        self.colc_r = meta.colc_r
+        self.colc_i = meta.colc_i
+        self.colc_z = meta.colc_z
