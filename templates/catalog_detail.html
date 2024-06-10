@@ -13,9 +13,11 @@
                 <tr>
                     <td class="clz-major">{{galaxy.taxonomy_code}}</td>
                 </tr>
+                {% if galaxy.taxonomy_code !=  galaxy.obj_class %}
                 <tr>
                     <td class="clz-minor">{{galaxy.obj_class}}<input type="hidden" id="clz-minor" value="{{galaxy.obj_class}}"/></td>
                 </tr>
+                {% endif %}
             </table>
         </td>
         <td>

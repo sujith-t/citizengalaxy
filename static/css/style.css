@@ -246,10 +246,10 @@ footer {
     font-family: Arial, Tahoma, ui-rounded;
     text-align: center;
     font-size: 100px;
-    border-bottom: 3px solid #000000;
 }
 
 .clz-minor {
+    border-top: 3px solid #000000;
     font-family: Arial, Tahoma, ui-rounded;
     text-align: center;
     font-size: 30px;
