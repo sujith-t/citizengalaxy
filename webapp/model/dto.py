@@ -46,7 +46,6 @@ class GalaxyDetail(CatalogSearchResult):
         dec_tmp = round((dec_tmp - math.floor(dec_tmp)) * 1000, 4)
         self.dec_string += str(dec_tmp) + "ms"
 
-        self.petror50_r = meta.petror50_r
         self.petror90_r = meta.petror90_r
 
         self.wvt_bin = meta.wvt_bin
@@ -101,3 +100,7 @@ class GalaxyDetail(CatalogSearchResult):
         self.colc_r = meta.colc_r
         self.colc_i = meta.colc_i
         self.colc_z = meta.colc_z
+
+        self.psfmag_r = meta.psfmag_r
+        self.fibermag_r = meta.fibermag_r
+        self.fracdev_r = meta.fracdev_r
