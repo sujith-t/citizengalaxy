@@ -6,6 +6,8 @@ $(document).ready(function(){
     let rightAscension = parseFloat($("#ra").val());
     let declination = parseFloat($("#dec").val());
 
+    //var corsAttr = new EnableCorsAttribute("*", "*", "*");
+    //config.EnableCors(corsAttr);
     let aladin;
     A.init.then(() => {
         aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1.5});
@@ -17,4 +19,23 @@ $(document).ready(function(){
         aladin.addCatalog(markerLayer);
         markerLayer.addSources([marker1]);
     });
+
+    $(".detail-download").click(handleFileExport);
+
+    function handleFileExport() {
+        let outString = "field,value\r\n";
+        $.ajax({
+            type: "GET",
+            url: "/api/v1/catalog/id/" + $("#obj_id").val() + "/detail",
+            async: false,
+            success: function (data) {
+                for (k in data) {
+                    outString += k + "," + data[k] + "\r\n";
+                }
+            }
+        });
+
+        $(this).attr("href", 'data:text/plain;charset=utf-8,' + encodeURIComponent(outString));
+        $(this).attr("download", "galaxy_" + $("#obj_id").val() + ".csv");
+    }
 });

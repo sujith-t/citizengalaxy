@@ -1,5 +1,6 @@
 {% include "header.html" %}
 {% load static %}
+<link rel="stylesheet" href="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.min.css" />
 <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
 <script src="{% static 'js/catalog_detail.js' %}"></script>
 <br />
@@ -43,7 +44,11 @@
                 </tr>
                 <tr>
                     <td class="td-info">Petro 90% R-Band</td>
-                    <td>{{galaxy.petror90_r}}</td>
+                    <td valign="top">{{galaxy.petror90_r}}</td>
+                </tr>
+                <tr>
+                    <td><a class="detail-download">Download Data<input type="hidden" id="obj_id" value="{{galaxy.obj_id}}"/></a></td>
+                    <td><a class="detail-download"><img src="{% static 'images/download.png' %}" height="30" width="30" alt="Click here to download data in .csv" class="detail-download"/></a></td>
                 </tr>
             </table>
         </td>
@@ -239,21 +244,38 @@
                     <td>
                         <table class="catalog-tbl" width="100%">
                             <tr>
-                                <td colspan="3" class="header">Magnitude of R-Band</td>
+                                <td colspan="4" class="header">Magnitude of R-Band</td>
                             </tr>
                             <tr>
                                 <td><b>PSF</b></td>
                                 <td><b>Spectroscopic Fiber</b></td>
+                                <td><b>pure deVaucouleurs prof</b></td>
                                 <td><b>deVaoucouleurs Coeff</b></td>
                             </tr>
                             <tr bgcolor="#f6f9fb">
                                 <td align="center">{{galaxy.psfmag_r}}</td>
                                 <td align="center">{{galaxy.fibermag_r}}</td>
+                                <td align="center">{{galaxy.devmag_r}}</td>
                                 <td align="center">{{galaxy.fracdev_r}}</td>
                             </tr>
                         </table>
                     </td>
-                    <td>&nbsp;</td>
+                    <td valign="top">
+                        <table class="catalog-tbl" width="100%">
+                            <tr>
+                                <td><b>Expo Profile R-Band</b></td>
+                                <td><b>Error Expo Profile R-Band</b></td>
+                                <td><b>deVaucouleurs profile fit R-Band</b></td>
+                                <td><b>Petro Half-Light Radius</b></td>
+                            </tr>
+                            <tr bgcolor="#f6f9fb">
+                                <td align="center">{{galaxy.expmag_r}}</td>
+                                <td align="center">{{galaxy.expmagerr_r}}</td>
+                                <td align="center">{{galaxy.devmagerr_r}}</td>
+                                <td align="center">{{galaxy.petror50_r_kpc}}</td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
             </table>
         </td>

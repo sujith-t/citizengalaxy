@@ -103,4 +103,11 @@ class GalaxyDetail(CatalogSearchResult):
 
         self.psfmag_r = meta.psfmag_r
         self.fibermag_r = meta.fibermag_r
+        self.devmag_r = meta.devmag_r
         self.fracdev_r = meta.fracdev_r
+
+
+        self.devmagerr_r = meta.devmagerr_r
+        self.expmagerr_r = meta.expmagerr_r
+        self.expmag_r = meta.expmag_r
+        self.petror50_r_kpc = meta.petror50_r_kpc

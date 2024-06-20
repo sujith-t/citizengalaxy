@@ -303,3 +303,7 @@ footer {
     color: #3e4d4d;
     border-bottom:  1px solid #3e4d4d;
 }
+
+.detail-download {
+    cursor: pointer;
+}
