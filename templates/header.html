@@ -8,14 +8,14 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
         <script type="text/javascript">
-            var corsAttr = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(corsAttr);
             $(document).ready(function(){
 
                 $(".top-search-submit").click(function() {
                     $("#frm_quick_search").submit();
                 });
             });
+            var corsAttr = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(corsAttr);
         </script>
     </head>
     <body>

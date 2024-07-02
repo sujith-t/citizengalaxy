@@ -3,25 +3,12 @@
  * Deus et Scientia Erit Pactum Meum 2024
  **/
 $(document).ready(function(){
+    const ecliptic = ["Ec", "Ei", "Er"];
+    const spirals = ["Sa", "Sb", "Sc", "Sd", "Se"];
+    const barredSpirals = ["SBa", "SBb", "SBc", "SBd"];
 
-    new Chart($('#groups'), {
-        type: 'pie',
-        data: {
-            labels: ['Ecliptic', 'Spiral','Barred Spiral'],
-            datasets: [{
-                data: [10, 20, 30],
-                //backgroundColor: ["Yellow", "Blue", "Green"]
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Galaxy Types Distribution'
-                }
-            }
-        }
-    });
+    let classWiseCounts = $.ajax("/api/v1/catalog/class/counts", {async: false}).responseJSON;
+    drawGroupSummaryPieChart(classWiseCounts, "groups");
 
     new Chart($('#clazz'), {
         type: 'bar',
@@ -60,4 +47,40 @@ $(document).ready(function(){
             }
         }
     });
+
+    function drawGroupSummaryPieChart(counts, idValue) {
+        let groupCounts = [0,0,0,0];
+        for(g in ecliptic) {
+            groupCounts[0] += counts[ecliptic[g]];
+        }
+        for(g in spirals) {
+            groupCounts[1] += counts[spirals[g]];
+        }
+        for(g in barredSpirals) {
+            groupCounts[2] += counts[barredSpirals[g]];
+        }
+        groupCounts[3] = counts["UN"];
+
+        console.log(groupCounts);
+        chart = new Chart($('#' + idValue), {
+            type: 'pie',
+            data: {
+                labels: ['Ecliptic', 'Spiral','Barred Spiral', "Unknown"],
+                datasets: [{
+                    data: groupCounts,
+                    //backgroundColor: ["Yellow", "Blue", "Green"]
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Galaxy Types Distribution'
+                    }
+                }
+            }
+        });
+
+        return chart;
+    }
 });
