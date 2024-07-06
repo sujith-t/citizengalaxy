@@ -6,12 +6,76 @@ $(document).ready(function(){
     const ecliptic = ["Ec", "Ei", "Er"];
     const spirals = ["Sa", "Sb", "Sc", "Sd", "Se"];
     const barredSpirals = ["SBa", "SBb", "SBc", "SBd"];
+    const featureSelectorName = ".feature-selection";
+    const minusBtn = ".minus";
 
     let classWiseCounts = $.ajax("/api/v1/catalog/class/counts", {async: false}).responseJSON;
 
     drawGroupSummaryPieChart(classWiseCounts, "groups");
-    let barClassWiseChart = drawClassWiseBarChart(classWiseCounts, "clazz");
-    barClassWiseChart.resize(600,600);
+    drawClassWiseBarChart(classWiseCounts, "clazz");
+    drawFeaturesLineChartPerClass();
+
+    $(".plus").click(handlePlusClick);
+
+    $(minusBtn).click(handleMinusClick);
+
+    function handleMinusClick() {
+        let trNode = $(this).parent().parent();
+        $(trNode).remove();
+    }
+
+    function handlePlusClick() {
+        let numFeatures = $(featureSelectorName).length;
+        if(numFeatures >= 5) {
+            alert("Maximum 5 features can be analysed, can't add more");
+            return;
+        }
+
+        let trNode = $(this).parent().parent();
+        let newTr = $("<tr><td>&nbsp;</td></tr>");
+        let newTd = $("<td></td>");
+        let featureDropDown = $(featureSelectorName).get(0);
+        $(newTd).append($(featureDropDown).clone());
+        $(newTr).append(newTd);
+
+        let minusImg = $(minusBtn).get(0);
+        minusImg = $(minusImg).clone(true);
+        newTd = $("<td></td>").append($(minusImg).show());
+        $(newTr).append(newTd);
+        $(trNode).parent().append($(newTr));
+    }
+
+    function drawFeaturesLineChartPerClass() {
+        return new Chart($('#clazz-features'), {
+            type: 'line',
+            data: {
+                labels: [110,120,130,144,150,160,170],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.25
+                },
+                {
+                    label: 'My second Dataset',
+                    data: [100,130,523, 561, 200,321, 40],
+                    fill: false,
+                    borderColor: 'rgb(255,154,56)',
+                    tension: 0.25
+                }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Galaxy Types Distribution'
+                    }
+                }
+            }
+        });
+    }
 
     /**
      * @param counts

@@ -307,3 +307,8 @@ footer {
 .detail-download {
     cursor: pointer;
 }
+
+.seperator-border {
+    margin-top: 50px;
+    border-top:  1px solid #cecfcf;
+}

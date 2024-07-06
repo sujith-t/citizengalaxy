@@ -3,7 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'js/stats.js' %}"></script>
 
-<table align="center" width="900px" cellpadding="2px">
+<table align="center" width="1000px" cellpadding="2px">
     <tr>
         <td>
             <table>
@@ -13,9 +13,9 @@
                             <canvas id="groups"></canvas>
                         </div>
                     </td>
-                    <td width="550px">
+                    <td>
                         <div>
-                            <canvas id="clazz"></canvas>
+                            <canvas id="clazz" width="550px" height="350px"></canvas>
                         </div>
                     </td>
                 </tr>
@@ -23,7 +23,34 @@
         </td>
     </tr>
     <tr>
-        <td>aaa</td>
+        <td class="seperator-border">
+            <table class="tbl-classify">
+                <tr>
+                    <td>HTF Class</td>
+                    <td>
+                        <select id="htf-class" class="txt">
+                            <option>Ecliptic i</option>
+                        </select>
+                        <input type="button" value="Generate Chart" class="btn" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Feature</td>
+                    <td>
+                        <select class="txt feature-selection">
+                            <option>PETROMAG</option>
+                        </select>
+                    </td>
+                    <td>
+                        <img src="{% static 'images/plus.png' %}" width="35" height="35" class="plus" style="cursor: pointer;"/>
+                        <img src="{% static 'images/minus.png' %}" width="30" height="30" class="minus" style="cursor: pointer;display: none;"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <canvas id="clazz-features" height="400" width="800"></canvas>
+            </div>
+        </td>
     </tr>
 </table>
 {% include "footer.html" %}
