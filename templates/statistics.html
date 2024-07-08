@@ -29,10 +29,12 @@
                     <td>HTF Class</td>
                     <td>
                         <select id="htf-class" class="txt">
-                            <option>Ecliptic i</option>
+                            {% for item in classes %}
+                            <option value="{{item.code}}">{{item.description}} ({{item.code}})</option>
+                            {% endfor %}
                         </select>
-                        <input type="button" value="Generate Chart" class="btn" />
                     </td>
+                    <td><input type="button" value="Generate Chart" class="btn" /></td>
                 </tr>
                 <tr>
                     <td>Feature</td>

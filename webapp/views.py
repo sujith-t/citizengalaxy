@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .service.search import GalaxyLocatorServiceImpl
+from .service.stats import StatisticalServiceImpl
 
 
 # Create your views here.
@@ -8,7 +9,9 @@ def index(request):
 
 
 def statistics(request):
-    return render(request, 'statistics.html')
+    stats_service = StatisticalServiceImpl()
+    view_data = {'classes': stats_service.htf_sequence()}
+    return render(request, 'statistics.html', view_data)
 
 
 def classify(request):

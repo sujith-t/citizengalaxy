@@ -9,7 +9,7 @@ $(document).ready(function(){
     const featureSelectorName = ".feature-selection";
     const minusBtn = ".minus";
 
-    let classWiseCounts = $.ajax("/api/v1/catalog/class/counts", {async: false}).responseJSON;
+    let classWiseCounts = $.ajax("/api/v1/stats/class/counts", {async: false}).responseJSON;
 
     drawGroupSummaryPieChart(classWiseCounts, "groups");
     drawClassWiseBarChart(classWiseCounts, "clazz");

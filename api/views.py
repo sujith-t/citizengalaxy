@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from webapp.service.search import GalaxyLocatorServiceImpl
 from .serializers import ClassifySerializer
 from .service.classifier import ClassifierFactory
-from .service.stats import StatisticsServiceImpl
+from webapp.service.stats import StatisticalServiceImpl
 
 # @author Sujith T
 # Deus et Scientia Erit Pactum Meum 2024
@@ -65,6 +65,18 @@ def ra_dec_search(request):
     return Response(items, status=http_code)
 
 
+@api_view(["POST"])
+def feature_values_per_class(request):
+    post_data = request.data
+    stat_service = StatisticalServiceImpl()
+    output = stat_service.feature_values(post_data)
+
+    if output is None:
+        return Response(status=400)
+
+    return Response(output)
+
+
 @api_view(["GET"])
 def catalog_details(request, option, identifier):
     if option not in ['id', 'iauname'] or identifier is None:
@@ -88,6 +100,6 @@ def catalog_details(request, option, identifier):
 
 @api_view(["GET"])
 def class_counts(request):
-    stat_service = StatisticsServiceImpl()
+    stat_service = StatisticalServiceImpl()
     counts = stat_service.class_counts()
     return Response(counts)
