@@ -67,7 +67,14 @@ def ra_dec_search(request):
 
 @api_view(["POST"])
 def feature_values_per_class(request):
-    post_data = request.data
+    post_data = dict(request.data)
+    if "features[]" in post_data.keys():
+        post_data['features'] = post_data["features[]"]
+        post_data.pop("features[]")
+
+    if type(post_data['class']) is list:
+        post_data['class'] = post_data['class'][0]
+
     stat_service = StatisticalServiceImpl()
     output = stat_service.feature_values(post_data)
 

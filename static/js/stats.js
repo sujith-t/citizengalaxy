@@ -15,6 +15,21 @@ $(document).ready(function(){
     drawClassWiseBarChart(classWiseCounts, "clazz");
     drawFeaturesLineChartPerClass();
 
+    $(".class-data-points").click(function() {
+        let payload = {};
+        payload['class'] = "Ei";
+        payload['features'] = ["petror50_r", "petror90_r"];
+
+        let classData = $.ajax({
+            type: "POST",
+            url: "/api/v1/stats/class/values",
+            data: payload,
+            async: false
+        }).responseJSON;
+
+        console.log(payload);
+    });
+
     $(".plus").click(handlePlusClick);
 
     $(minusBtn).click(handleMinusClick);
@@ -70,7 +85,7 @@ $(document).ready(function(){
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Galaxy Types Distribution'
+                        text: 'Data Distribution Per Galaxy Type'
                     }
                 }
             }
