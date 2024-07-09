@@ -40,7 +40,9 @@
                     <td>Feature</td>
                     <td>
                         <select class="txt feature-selection">
-                            <option>PETROMAG</option>
+                            {% for f in features %}
+                            <option value="{{f}}">{{f}}</option>
+                            {% endfor %}
                         </select>
                     </td>
                     <td>

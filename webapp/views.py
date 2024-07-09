@@ -1,4 +1,7 @@
+import pandas as pd
 from django.shortcuts import render
+
+from citizengalaxy.settings import STATICFILES_DIRS
 from .service.search import GalaxyLocatorServiceImpl
 from .service.stats import StatisticalServiceImpl
 
@@ -10,7 +13,10 @@ def index(request):
 
 def statistics(request):
     stats_service = StatisticalServiceImpl()
-    view_data = {'classes': stats_service.htf_sequence()}
+    data_path = str(STATICFILES_DIRS.__getitem__(0)) + "/data"
+    df = pd.read_csv(data_path + "/feature_min_max.csv")
+    view_data = {'classes': stats_service.htf_sequence(), 'features': df['feature']}
+
     return render(request, 'statistics.html', view_data)
 
 

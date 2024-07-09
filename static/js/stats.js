@@ -13,12 +13,33 @@ $(document).ready(function(){
 
     drawGroupSummaryPieChart(classWiseCounts, "groups");
     drawClassWiseBarChart(classWiseCounts, "clazz");
-    drawFeaturesLineChartPerClass();
+
+    let postData = {"class": "Er", "features": ["petror50_r"]};
+    let classData = $.ajax({
+        type: "POST",
+        url: "/api/v1/stats/class/values",
+        data: postData,
+        async: false
+    }).responseJSON;
+    let labels = [];
+    for(let x=1; x < (classData['total']) + 1; x++) {
+        labels.push(x);
+    }
+    let dataArray = [{
+        label: "petror50_r",
+        data: classData["petror50_r"],
+        fill: false,
+        tension: 0.1
+    }];
+    let chart = drawFeaturesLineChartPerClass("clazz-features", labels, dataArray);
 
     $(".class-data-points").click(function() {
         let payload = {};
-        payload['class'] = "Ei";
-        payload['features'] = ["petror50_r", "petror90_r"];
+        payload['class'] = $("#htf-class").val();
+        payload['features'] = [];
+        $(".feature-selection").each(function() {
+            payload['features'].push($(this).val().toLowerCase());
+        });
 
         let classData = $.ajax({
             type: "POST",
@@ -27,7 +48,27 @@ $(document).ready(function(){
             async: false
         }).responseJSON;
 
-        console.log(payload);
+        let labels = [];
+        for(let x=1; x < (classData['total']) + 1; x++) {
+            labels.push(x);
+        }
+
+        let dataArray = [];
+        for(let x in payload['features']) {
+            let obj = {
+                label: payload['features'][x],
+                data: classData[payload['features'][x]],
+                fill: false,
+                tension: 0.1
+            }
+            dataArray.push(obj);
+        }
+        //console.log(labels);
+        //console.log(dataArray);
+        //let chart = drawFeaturesLineChartPerClass("clazz-features", labels, dataArray);
+        chart.data.labels = labels;
+        chart.data.datasets = dataArray;
+        chart.update();
     });
 
     $(".plus").click(handlePlusClick);
@@ -60,26 +101,12 @@ $(document).ready(function(){
         $(trNode).parent().append($(newTr));
     }
 
-    function drawFeaturesLineChartPerClass() {
-        return new Chart($('#clazz-features'), {
+    function drawFeaturesLineChartPerClass(idValue, xAxis, dataArray) {
+        return new Chart($('#' + idValue), {
             type: 'line',
             data: {
-                labels: [110,120,130,144,150,160,170],
-                datasets: [{
-                    label: 'My First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.25
-                },
-                {
-                    label: 'My second Dataset',
-                    data: [100,130,523, 561, 200,321, 40],
-                    fill: false,
-                    borderColor: 'rgb(255,154,56)',
-                    tension: 0.25
-                }
-                ]
+                labels: xAxis,
+                datasets: dataArray
             },
             options: {
                 plugins: {
