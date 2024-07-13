@@ -84,6 +84,26 @@ def feature_values_per_class(request):
     return Response(output)
 
 
+@api_view(["POST"])
+def class_values_per_feature(request):
+    post_data = dict(request.data)
+
+    if "classes[]" in post_data.keys():
+        post_data['classes'] = post_data["classes[]"]
+        post_data.pop("classes[]")
+
+    if type(post_data['feature']) is list:
+        post_data['feature'] = post_data['feature'][0]
+
+    stat_service = StatisticalServiceImpl()
+    output = stat_service.class_values(post_data)
+
+    if output is None:
+        return Response(status=400)
+
+    return Response(output)
+
+
 @api_view(["GET"])
 def catalog_details(request, option, identifier):
     if option not in ['id', 'iauname'] or identifier is None:

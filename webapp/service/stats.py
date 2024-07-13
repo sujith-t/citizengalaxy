@@ -49,3 +49,34 @@ class StatisticalServiceImpl:
             cursor.close()
 
         return output
+
+    def class_values(self, param: dict):
+        output = {}
+        if "classes" not in param.keys() or "feature" not in param.keys() or len(param['classes']) == 0:
+            return
+
+        taxonomies = GalaxyTaxonomyModel.objects.filter(code__in=param["classes"])
+        classes = {str(t.id) : t.code for t in taxonomies}
+
+        with (connection.cursor() as cursor):
+            q = ("SELECT gc.taxanomy_id, %s FROM galaxy_catalog AS gc JOIN sdss_meta AS sm "
+                 + "ON gc.obj_id = sm.obj_id WHERE gc.taxanomy_id IN (%s)") % (param['feature'], ",".join(classes))
+
+            cursor.execute(q)
+            results = cursor.fetchall()
+
+            for r in results:
+                clazz = classes[str(r[0])]
+                if clazz not in output.keys():
+                    output[clazz] = []
+
+                output[clazz].append(r[1])
+
+            cursor.close()
+
+        counts_list = [len(output[x]) for x in output]
+        max_limit = max(counts_list)
+
+        output['label_count'] = max_limit
+
+        return output

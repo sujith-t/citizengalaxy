@@ -6,9 +6,9 @@ $(document).ready(function(){
     const ecliptic = ["Ec", "Ei", "Er"];
     const spirals = ["Sa", "Sb", "Sc", "Sd", "Se"];
     const barredSpirals = ["SBa", "SBb", "SBc", "SBd"];
-    const featureSelectorName = ".feature-selection";
     const minusBtn = ".minus";
     let featureChart;
+    let classChart;
 
     //loading the static pie and the bar charts
     $.ajax("/api/v1/stats/class/counts", {
@@ -19,10 +19,10 @@ $(document).ready(function(){
         }
     });
 
-
+    //draw feature charts
     $.ajax({
         type: "POST",
-        url: "/api/v1/stats/class/values",
+        url: "/api/v1/stats/feature/values",
         data: {"class": "Er", "features": ["petror50_r"]},
         async: true,
         success: function (data) {
@@ -41,8 +41,33 @@ $(document).ready(function(){
         }
     });
 
+    $.ajax({
+        type: "POST",
+        url: "/api/v1/stats/class/values",
+        data: {"classes": ["Sa", "SBa"], "feature": "petror50_r"},
+        async: true,
+        success: function (data) {
+            let labels = [];
+            for(let x=1; x < (data['label_count']) + 1; x++) {
+                labels.push(x);
+            }
+            let dataArray = [{
+                label: "Sa",
+                data: data["Sa"],
+                fill: false,
+                tension: 0.1
+            },
+            {
+                label: "SBa",
+                data: data["SBa"],
+                fill: false,
+                tension: 0.1
+            }];
+            classChart = drawDynamicLineChart("clazz-values", labels, dataArray);
+        }
+    });
 
-    $(".class-data-points").click(function() {
+    $(".feature-data-points").click(function() {
         let payload = {};
         payload['class'] = $("#htf-class").val();
         payload['features'] = [];
@@ -52,7 +77,7 @@ $(document).ready(function(){
 
         let classData = $.ajax({
             type: "POST",
-            url: "/api/v1/stats/class/values",
+            url: "/api/v1/stats/feature/values",
             data: payload,
             async: false
         }).responseJSON;
@@ -78,6 +103,42 @@ $(document).ready(function(){
         featureChart.update();
     });
 
+    $(".class-data-points").click(function() {
+        let payload = {};
+        payload['feature'] = $("#feature-list").val().toLowerCase();
+        payload['classes'] = [];
+        $(".clazz-selection").each(function() {
+            payload['classes'].push($(this).val());
+        });
+
+        let classData = $.ajax({
+            type: "POST",
+            url: "/api/v1/stats/class/values",
+            data: payload,
+            async: false
+        }).responseJSON;
+
+        let labels = [];
+        for(let x=1; x < (classData['label_count']) + 1; x++) {
+            labels.push(x);
+        }
+
+        let dataArray = [];
+        for(let x in payload['classes']) {
+            let obj = {
+                label: payload['classes'][x],
+                data: classData[payload['classes'][x]],
+                fill: false,
+                tension: 0.1
+            }
+            dataArray.push(obj);
+        }
+
+        classChart.data.labels = labels;
+        classChart.data.datasets = dataArray;
+        classChart.update();
+    });
+
     $(".plus").click(handlePlusClick);
 
     $(minusBtn).click(handleMinusClick);
@@ -88,6 +149,10 @@ $(document).ready(function(){
     }
 
     function handlePlusClick() {
+        let featureSelectorName = ".clazz-selection";
+        if ($(this).hasClass("feature"))
+            featureSelectorName = ".feature-selection";
+
         let numFeatures = $(featureSelectorName).length;
         if(numFeatures >= 5) {
             alert("Maximum 5 features can be analysed, can't add more");

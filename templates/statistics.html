@@ -34,7 +34,7 @@
                             {% endfor %}
                         </select>
                     </td>
-                    <td><input type="button" value="Generate Chart" class="btn class-data-points" /></td>
+                    <td><input type="button" value="Generate Chart" class="btn feature-data-points" /></td>
                 </tr>
                 <tr>
                     <td>Feature</td>
@@ -46,13 +46,48 @@
                         </select>
                     </td>
                     <td>
-                        <img src="{% static 'images/plus.png' %}" width="35" height="35" class="plus" style="cursor: pointer;"/>
+                        <img src="{% static 'images/plus.png' %}" width="35" height="35" class="plus feature" style="cursor: pointer;"/>
                         <img src="{% static 'images/minus.png' %}" width="30" height="30" class="minus" style="cursor: pointer;display: none;"/>
                     </td>
                 </tr>
             </table>
             <div>
                 <canvas id="clazz-features" height="400" width="800"></canvas>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="seperator-border">
+            <table class="tbl-classify">
+                <tr>
+                    <td>Feature</td>
+                    <td>
+                        <select id="feature-list" class="txt">
+                            {% for f in features %}
+                            <option value="{{f}}">{{f}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td><input type="button" value="Generate Chart" class="btn class-data-points" /></td>
+                </tr>
+                <tr>
+                    <td>HTF Class</td>
+                    <td>
+                        <select class="txt clazz-selection">
+                            {% for item in classes %}
+                            <option value="{{item.code}}">{{item.description}} ({{item.code}})</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <img src="{% static 'images/plus.png' %}" width="35" height="35" class="plus clazz" style="cursor: pointer;"/>
+                        <img src="{% static 'images/minus.png' %}" width="30" height="30" class="minus" style="cursor: pointer;display: none;"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <canvas id="clazz-values" height="400" width="800"></canvas>
             </div>
         </td>
     </tr>
