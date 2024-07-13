@@ -8,30 +8,39 @@ $(document).ready(function(){
     const barredSpirals = ["SBa", "SBb", "SBc", "SBd"];
     const featureSelectorName = ".feature-selection";
     const minusBtn = ".minus";
+    let featureChart;
 
-    let classWiseCounts = $.ajax("/api/v1/stats/class/counts", {async: false}).responseJSON;
+    //loading the static pie and the bar charts
+    $.ajax("/api/v1/stats/class/counts", {
+        async: true,
+        success: function (data) {
+            drawGroupSummaryPieChart(data, "groups");
+            drawClassWiseBarChart(data, "clazz");
+        }
+    });
 
-    drawGroupSummaryPieChart(classWiseCounts, "groups");
-    drawClassWiseBarChart(classWiseCounts, "clazz");
 
-    let postData = {"class": "Er", "features": ["petror50_r"]};
-    let classData = $.ajax({
+    $.ajax({
         type: "POST",
         url: "/api/v1/stats/class/values",
-        data: postData,
-        async: false
-    }).responseJSON;
-    let labels = [];
-    for(let x=1; x < (classData['total']) + 1; x++) {
-        labels.push(x);
-    }
-    let dataArray = [{
-        label: "petror50_r",
-        data: classData["petror50_r"],
-        fill: false,
-        tension: 0.1
-    }];
-    let chart = drawFeaturesLineChartPerClass("clazz-features", labels, dataArray);
+        data: {"class": "Er", "features": ["petror50_r"]},
+        async: true,
+        success: function (data) {
+            let labels = [];
+            for(let x=1; x < (data['total']) + 1; x++) {
+                labels.push(x);
+            }
+            let dataArray = [{
+                label: "petror50_r",
+                data: data["petror50_r"],
+                fill: false,
+                tension: 0.1
+            }];
+
+            featureChart = drawDynamicLineChart("clazz-features", labels, dataArray);
+        }
+    });
+
 
     $(".class-data-points").click(function() {
         let payload = {};
@@ -63,12 +72,10 @@ $(document).ready(function(){
             }
             dataArray.push(obj);
         }
-        //console.log(labels);
-        //console.log(dataArray);
-        //let chart = drawFeaturesLineChartPerClass("clazz-features", labels, dataArray);
-        chart.data.labels = labels;
-        chart.data.datasets = dataArray;
-        chart.update();
+
+        featureChart.data.labels = labels;
+        featureChart.data.datasets = dataArray;
+        featureChart.update();
     });
 
     $(".plus").click(handlePlusClick);
@@ -101,7 +108,7 @@ $(document).ready(function(){
         $(trNode).parent().append($(newTr));
     }
 
-    function drawFeaturesLineChartPerClass(idValue, xAxis, dataArray) {
+    function drawDynamicLineChart(idValue, xAxis, dataArray) {
         return new Chart($('#' + idValue), {
             type: 'line',
             data: {
