@@ -68,6 +68,7 @@ class GalaxyLocatorServiceImpl:
                 result.append(search_result)
 
         if param['search_option'] == "ra_dec":
+
             input_ra, input_dec = float(param["ra"]), float(param["dec"])
             galaxy_catalogs = GalaxyCatalogModel.objects.filter(ra__gt=(input_ra - 0.25), ra__lt=(input_ra + 0.25),
                                                                 declination__gt=(input_dec - 0.25),
@@ -97,6 +98,9 @@ class GalaxyLocatorServiceImpl:
             return
 
         galaxy_catalog = GalaxyCatalogModel.objects.filter(obj_id=search_result[0].obj_id).first()
+        if galaxy_catalog is None:
+            return
+
         sdss_meta = SdssMetadataModel.objects.filter(obj_id=search_result[0].obj_id).first()
         taxonomy = GalaxyTaxonomyModel.objects.filter(id=galaxy_catalog.taxanomy_id).first()
 
