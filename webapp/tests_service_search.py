@@ -75,3 +75,14 @@ class GalaxyLocatorTestCase(unittest.TestCase):
         search_param["search_value"] = "58x"
         galaxy = locator.get_details(search_param)
         self.assertEquals(galaxy, None)
+
+    # find complete galaxy details by iauname
+    def test_get_details_by_iauname(self):
+        locator = GalaxyLocatorServiceImpl()
+        search_param = {"search_value": "J121808.55-010350.8", "search_option": "iauname"}
+        galaxy = locator.get_details(search_param)
+        self.assertTrue(isinstance(galaxy, GalaxyDetail))
+
+        search_param["search_value"] = "JKU"
+        galaxy = locator.get_details(search_param)
+        self.assertEquals(galaxy, None)
