@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
 
+from citizengalaxy.settings import ML_MODEL
 from webapp.service.search import GalaxyLocatorServiceImpl
 from .serializers import ClassifySerializer
 from .service.classifier import ClassifierFactory
@@ -10,8 +11,7 @@ from webapp.service.stats import StatisticalServiceImpl
 # @author Sujith T
 # Deus et Scientia Erit Pactum Meum 2024
 
-classifier = ClassifierFactory.fetch_classifier()
-
+classifier = ClassifierFactory.fetch_classifier(ML_MODEL)
 
 @api_view(["POST"])
 def classify_galaxy(request):

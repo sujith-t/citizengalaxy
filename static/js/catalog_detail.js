@@ -36,6 +36,6 @@ $(document).ready(function(){
         });
 
         $(this).attr("href", 'data:text/plain;charset=utf-8,' + encodeURIComponent(outString));
-        $(this).attr("download", "galaxy_" + $("#obj_id").val() + ".csv");
+        $(this).attr("download", $("#obj_id").val() + ".csv");
     }
 });

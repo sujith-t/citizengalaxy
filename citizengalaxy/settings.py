@@ -55,6 +55,10 @@ ROOT_URLCONF = "citizengalaxy.urls"
 
 # static folder to keep all html static assets
 STATIC_URL = "static/"
+
+# loading the model strategy
+ML_MODEL = "random_forest"
+
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 TEMPLATES = [
@@ -124,8 +128,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -136,6 +136,30 @@ class RandomForestClassifierImpl(ClassifierModel):
 
 
 # @author Sujith T
+# Deus et Scientia Erit Pactum Meum 2024
+# A sample alternate classifier for Neural Network
+class NeuralNetworkClassifierImpl(ClassifierModel):
+
+    # default constructor
+    def __init__(self):
+        super().__init__()
+
+        data_path = str(STATICFILES_DIRS.__getitem__(0)) + "/data"
+        self._classifier = joblib.load(data_path + "/rf_model.joblib")
+        print("Neural Network model loaded")
+
+    # does the class prediction for a galaxy based on user inputs
+    def predict_galaxy_class(self, data={}):
+        data_to_predict = [self._detect_adjust_border_values(data)]
+        data_to_predict = self._std_scaler.transform(pd.DataFrame(data_to_predict))
+        data_to_predict = pd.DataFrame(data=data_to_predict, columns=self._features)
+
+        data_to_predict = pd.DataFrame(data=self._kbins.transform(data_to_predict), columns=self._features)
+        predictions = self._classifier.predict(data_to_predict)
+
+        return predictions[0]
+
+# @author Sujith T
 # Factory to maintain models singleton
 # Deus et Scientia Erit Pactum Meum 2024
 class ClassifierFactory:
@@ -150,6 +174,9 @@ class ClassifierFactory:
 
             if model_name == "random_forest":
                 classifier = RandomForestClassifierImpl()
+
+            if model_name == "neural_network":
+                classifier = NeuralNetworkClassifierImpl()
 
             cls._clazz_dict[model_name] = classifier
 
