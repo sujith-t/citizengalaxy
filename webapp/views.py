@@ -36,10 +36,10 @@ def catalog(request):
 
     if request.method == "POST":
         post_data = {"search_option": request.POST.get('search_option'),
-                     "search_value": request.POST.get('search_value')}
+                     "search_value": request.POST.get('search_value').strip()}
         if post_data["search_option"] == "ra_dec":
-            post_data["ra"] = request.POST.get('ra')
-            post_data["dec"] = request.POST.get('dec')
+            post_data["ra"] = request.POST.get('ra').strip()
+            post_data["dec"] = request.POST.get('dec').strip()
 
         result = locator.search(post_data)
 
