@@ -1,4 +1,42 @@
 {% include "header.html" %}
-<h3>Galaxy!!</h3>
-<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+{% load static %}
+<table width="900px" cellpadding="2" align="center">
+    <tr>
+        <td>
+            <!--https://science.nasa.gov/universe/galaxies/-->
+            <p class="head-title">Galaxies</p>
+            <p>Galaxies consist of stars, planets, and vast clouds of gas and dust, all bound together by gravity. The largest contain trillions of stars and can be more than a million light-years across. The smallest can contain a few thousand stars and span just a few hundred light-years. Most large galaxies have supermassive black holes at their centers, some with billions of times the Sun’s mass.</p>
+            <p>Galaxies come in a variety of shapes, mostly spirals and ellipticals, as well as those with less orderly appearances, usually dubbed irregular.</p>
+            <p>Most galaxies are between 10 billion and 13.6 billion years old. Some are almost as old as the universe itself, which formed around 13.8 billion years ago. Astronomers think the youngest known galaxy formed approximately 500 million years ago.</p>
+            <p>Galaxies can organize into groups of about 100 or fewer members held together by their mutual gravity. Larger structures, called clusters, may contain thousands of galaxies. Groups and clusters can be arranged in superclusters, which are not gravitationally bound. Superclusters, empty voids, “walls” of galaxies, and other large-scale structures make up the cosmic web of matter in the universe.</p>
+            <p class="head-title">Milky Way</p>
+            <img src="https://science.nasa.gov/wp-content/uploads/2023/09/Milky_Way_illustration-1.jpeg" align="center"/> <br />
+            <p>Our home galaxy is called the Milky Way. It’s a spiral galaxy with a disk of stars spanning more than 100,000 light-years. Earth is located along one of the galaxy’s spiral arms, about halfway from the center. Our solar system takes about 240 million years to orbit the Milky Way just once. (Credits: NASA)</p>
+            <p class="head-title">The Hubble Tuning Fork</p>
+            <table border="0" cellpadding="2" align="center">
+                <tr>
+                    <td><img src="https://skyserver.sdss.org/dr1/en/proj/advanced/galaxies/images/TuningFork.jpg" width="400" height="400" /></td>
+                    <td valign="top">
+                        <table border="0">
+                            <tr>
+                                <td><a href="/classify"><img src="{% static 'images/target.jpg' %}" height="50" width="50"/></a></td>
+                                <td><a href="/classify"><p>Try out our automated classifier</p></a></td>
+                            </tr>
+                        </table>
+                        <p>After he discovered what galaxies really were, Edwin Hubble became the first person to classify galaxies. Astronomers use his system, called the "Hubble Tuning Fork," even today. First, Hubble divided the galaxies into two general categories: elliptical and spiral galaxies. Elliptical galaxies are shaped like ellipses, and spiral galaxies are shaped like spirals, with arms winding in to a bright center.</p>
+                        <p>Elliptical galaxies are classified by how round or flat they look. An E0 galaxy is very round and an E7 galaxy is very flat. In detail, the number after the "E" is determined by the galaxy's ellipticity - the ratio of the ellipse's major axis to minor axis. Galaxies with higher ellipticities have higher numbers.</p>
+                        <p>Hubble noticed that some spiral galaxies have a bright line, or bar, running through them. He called these galaxies "barred spiral galaxies." Galaxies with spiral arms, but without the bar, are just called "spiral galaxies."</p>
+                        <p>Spiral galaxies are further classified by how tightly their arms are wound. Type a galaxies have their arms wound very tightly and have large central bulges. Type c galaxies have very their arms would loosely and have small central bulges. (Credits: SDSS)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p>Some galaxies are a transition type between the elliptical and spiral galaxies, labeled S0 on the tuning fork. These are called "lenticular galaxies." Lenticular galaxies have a central bulge and a disk but no spiral arms.</p>
+                        <p>The third class of galaxies is irregular galaxies. Irregular galaxies are neither spiral nor elliptical, and can have any number of shapes. They are frequently the product of two galaxies colliding with each other, or at least affecting each other through the force of gravity.</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 {% include "footer.html" %}
