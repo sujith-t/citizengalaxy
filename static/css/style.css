@@ -268,10 +268,11 @@ footer {
     border-right: 1px solid #3e4d4d;
 }
 
-p {
+td p {
     font-family: Arial, Tahoma, ui-rounded;
     font-size: 14px;
     text-align: justify;
+    color: #3e4d4d;
 }
 
 .head-title {

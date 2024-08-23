@@ -37,7 +37,7 @@ $(document).ready(function(){
                 tension: 0.1
             }];
 
-            featureChart = drawDynamicLineChart("clazz-features", labels, dataArray);
+            featureChart = drawDynamicLineChart("clazz-features", labels, dataArray, "Feature/s Comparison Per Class");
         }
     });
 
@@ -63,7 +63,7 @@ $(document).ready(function(){
                 fill: false,
                 tension: 0.1
             }];
-            classChart = drawDynamicLineChart("clazz-values", labels, dataArray);
+            classChart = drawDynamicLineChart("clazz-values", labels, dataArray, "Classwise Feature Distribution");
         }
     });
 
@@ -173,7 +173,7 @@ $(document).ready(function(){
         $(trNode).parent().append($(newTr));
     }
 
-    function drawDynamicLineChart(idValue, xAxis, dataArray) {
+    function drawDynamicLineChart(idValue, xAxis, dataArray, title) {
         return new Chart($('#' + idValue), {
             type: 'line',
             data: {
@@ -184,7 +184,7 @@ $(document).ready(function(){
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Data Distribution Per Galaxy Type'
+                        text: title
                     }
                 }
             }

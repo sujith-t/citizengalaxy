@@ -76,13 +76,26 @@
                     <td>
                         <select class="txt clazz-selection">
                             {% for item in classes %}
-                            <option value="{{item.code}}">{{item.description}} ({{item.code}})</option>
+                            <option value="{{item.code}}" {% if item.code == 'Sa' %} selected {% endif %}>{{item.description}} ({{item.code}})</option>
                             {% endfor %}
                         </select>
                     </td>
                     <td>
                         <img src="{% static 'images/plus.png' %}" width="35" height="35" class="plus clazz" style="cursor: pointer;"/>
                         <img src="{% static 'images/minus.png' %}" width="30" height="30" class="minus" style="cursor: pointer;display: none;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <select class="txt clazz-selection">
+                            {% for item in classes %}
+                            <option value="{{item.code}}" {% if item.code == 'SBa' %} selected {% endif %}>{{item.description}} ({{item.code}})</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <img src="{% static 'images/minus.png' %}" width="30" height="30" class="minus" style="cursor: pointer;"/>
                     </td>
                 </tr>
             </table>
