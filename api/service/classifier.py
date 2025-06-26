@@ -121,7 +121,6 @@ class RandomForestClassifierImpl(ClassifierModel):
 
         data_path = str(STATICFILES_DIRS.__getitem__(0)) + "/data"
         self._classifier = joblib.load(data_path + "/rf_model.joblib")
-        print("Random forest model loaded")
 
     # does the class prediction for a galaxy based on user inputs
     def predict_galaxy_class(self, data={}):
@@ -132,6 +131,7 @@ class RandomForestClassifierImpl(ClassifierModel):
         data_to_predict = pd.DataFrame(data=self._kbins.transform(data_to_predict), columns=self._features)
         predictions = self._classifier.predict(data_to_predict)
 
+        print("Predicted with Random Forest")
         return predictions[0]
 
 
@@ -146,7 +146,6 @@ class NeuralNetworkClassifierImpl(ClassifierModel):
 
         data_path = str(STATICFILES_DIRS.__getitem__(0)) + "/data"
         self._classifier = joblib.load(data_path + "/rf_model.joblib")
-        print("Neural Network model loaded")
 
     # does the class prediction for a galaxy based on user inputs
     def predict_galaxy_class(self, data={}):
@@ -157,7 +156,9 @@ class NeuralNetworkClassifierImpl(ClassifierModel):
         data_to_predict = pd.DataFrame(data=self._kbins.transform(data_to_predict), columns=self._features)
         predictions = self._classifier.predict(data_to_predict)
 
+        print("Predicted with Neural Network")
         return predictions[0]
+
 
 # @author Sujith T
 # Factory to maintain models singleton

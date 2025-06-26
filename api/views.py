@@ -49,6 +49,7 @@ def basic_search(request, option, identifier):
 
 @api_view(["POST"])
 def ra_dec_search(request):
+    print(request)
     post_data = request.data
     if "ra" not in post_data or "dec" not in post_data:
         return Response({"message": "Invalid search parameters for RA/DEC", "status": 400,

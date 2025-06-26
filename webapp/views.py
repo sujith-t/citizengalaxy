@@ -36,7 +36,7 @@ def catalog(request):
 
     if request.method == "POST":
         post_data = {"search_option": request.POST.get('search_option'),
-                     "search_value": request.POST.get('search_value').strip()}
+                     "search_value": request.POST.get('search_value')}
         if post_data["search_option"] == "ra_dec":
             post_data["ra"] = request.POST.get('ra').strip()
             post_data["dec"] = request.POST.get('dec').strip()
