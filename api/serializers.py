@@ -55,7 +55,7 @@ class ClassifySerializer(serializers.Serializer):
 
     #petromag_mu = serializers.FloatField(required=True, min_value=-25, max_value=8)
     #petromag_mg = serializers.FloatField(required=True, min_value=-25.5, max_value=-0.3)
-    #petromag_mr = serializers.FloatField(required=True, min_value=-26.5, max_value=-1)
+    petromag_mr = serializers.FloatField(required=True, min_value=-26.5, max_value=-1)
     #petromag_mi = serializers.FloatField(required=True, min_value=-26.1, max_value=5.5)
     #petromag_mz = serializers.FloatField(required=True, min_value=-26.6, max_value=3.4)
 
@@ -67,6 +67,6 @@ class ClassifySerializer(serializers.Serializer):
 
     #petror50_r_kpc = serializers.FloatField(required=True, min_value=-19500, max_value=105)
     petror50_r_kpc_simple_bin = serializers.IntegerField(required=True, min_value=0, max_value=150)
-    petromag_mr_simple_bin = serializers.IntegerField(required=True, min_value=0, max_value=180)
+    #petromag_mr_simple_bin = serializers.IntegerField(required=True, min_value=0, max_value=180)
     redshift_simple_bin = serializers.IntegerField(required=True, min_value=0, max_value=15)
     wvt_bin = serializers.IntegerField(required=True, min_value=0, max_value=122)

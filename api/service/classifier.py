@@ -124,8 +124,12 @@ class RandomForestClassifierImpl(ClassifierModel):
 
     # does the class prediction for a galaxy based on user inputs
     def predict_galaxy_class(self, data={}):
-        data_to_predict = [self._detect_adjust_border_values(data)]
-        data_to_predict = self._std_scaler.transform(pd.DataFrame(data_to_predict))
+        border_corrected = self._detect_adjust_border_values(data)
+        row = []
+        for c in self._features:
+            row.append(border_corrected[c])
+        data_to_predict = [row]
+        #data_to_predict = self._std_scaler.transform(pd.DataFrame(data_to_predict))
         data_to_predict = pd.DataFrame(data=data_to_predict, columns=self._features)
 
         data_to_predict = pd.DataFrame(data=self._kbins.transform(data_to_predict), columns=self._features)
